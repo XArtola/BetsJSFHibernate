@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#main.xhtml" PATH="/main.xhtml"
+  SHAPE="256,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#main.xhtml:0" NAME="item" PATH="/main.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="find::#FindQuestions.xhtml" NAME="output"
+    PATH="/FindQuestions.xhtml" TARGET="rules:#FindQuestions.xhtml"
+    TITLE="find" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#main.xhtml:1" NAME="item1" PATH="/main.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="create::#CreateQuestion.xhtml" NAME="output"
+    PATH="/CreateQuestion.xhtml" TARGET="rules:#CreateQuestion.xhtml"
+    TITLE="create" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#CreateQuestion.xhtml"
+  PATH="/CreateQuestion.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#CreateQuestion.xhtml:0" NAME="item"
+   PATH="/CreateQuestion.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="atzera::#main.xhtml" NAME="output"
+    PATH="/main.xhtml" TARGET="rules:#main.xhtml" TITLE="atzera" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#FindQuestions.xhtml"
+  PATH="/FindQuestions.xhtml" SHAPE="480,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#FindQuestions.xhtml:0" NAME="item"
+   PATH="/FindQuestions.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="atzera::#main.xhtml" NAME="output"
+    PATH="/main.xhtml" TARGET="rules:#main.xhtml" TITLE="atzera" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

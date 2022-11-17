@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Insert title here</title>
+</h:head>
+<h:body>
+	<div>
+		<h:form>
+			<table>
+				<tr>
+					<td>
+						<h4>Event date</h4>
+					</td>
+				</tr>
+
+				<tr>
+				<!--  	<p:calendar id="data" value="#{bets.data}" navigator="false"
+						mode="inline"> -->
+						
+						<p:calendar id="data" navigator="false" mode="inline">
+						<p:ajax event="dateSelect" listener="#{bets.onDateSelect}"
+							update="mezuak"></p:ajax>
+					</p:calendar>
+					<!-- <h:message id="mezuak" for="data" style="color:red" />-->
+				<h:messages id="mezuak" style="color:blue" />
+
+				</tr>
+
+			</table>
+		</h:form>
+	</div>
+	<div>
+
+		
+	<!-- 	<h:dataTable id="taula" value="#{login.motak}" var="item" border="1">
+			<f:facet name="header">Events</f:facet>
+			<h:column>
+				<f:facet name="header">Kodea</f:facet>
+			#{item.kodea}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Mota</f:facet>
+			#{item.erabMota}
+			</h:column>
+		</h:dataTable> -->
+
+	</div>
+
+	<div>
+
+		<h4>Questions for the event ...</h4>
+
+		<table>
+			<tr>
+				<td>#Question</td>
+				<td>Question</td>
+			</tr>
+			<tr>
+				<td>afaf</td>
+				<td>afdfa</td>
+			</tr>
+			<tr>
+				<td>afaf</td>
+				<td>adfdf</td>
+			</tr>
+		</table>
+
+	</div>
+	<h:form>
+		<h:commandButton value="Back" action="#{bets.atzera}" />
+	</h:form>
+
+</h:body>
+</html>

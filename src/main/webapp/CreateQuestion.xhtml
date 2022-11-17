@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>BetsJSF aplikazioa</title>
+</h:head>
+<h:body>
+	<div>
+
+		<table>
+			<tr>
+				<td>
+					<h4>Event date</h4>
+				</td>
+			</tr>
+
+			<tr>
+			<p:calendar id="data" value="#{login.data}" navigator="false" mode="inline">
+				</p:calendar>
+
+			</tr>
+
+		</table>
+
+	</div>
+	<div>
+
+		<h4>Events:</h4>
+		<form action="/action_page.php">
+			<label for="cars">Choose a car:</label> <select name="cars" id="cars">
+				<option value="volvo">Volvo</option>
+				<option value="saab">Saab</option>
+				<option value="opel">Opel</option>
+				<option value="audi">Audi</option>
+			</select> <input type="submit" value="Submit"></input>
+		</form>
+
+	</div>
+
+	<div>
+
+		<h4>Questions for the event ...</h4>
+
+		<table>
+			<tr>
+				<td>Question</td>
+				<td><input type="text"></input></td>
+			</tr>
+			<tr>
+				<td>Min bet</td>
+				<td><input type="text"></input></td>
+			</tr>
+
+		</table>
+
+	</div>
+
+	<h:form>
+		<h:commandButton value="Back" action="#{bets.atzera}" />
+	</h:form>
+
+
+</h:body>
+
+</html>

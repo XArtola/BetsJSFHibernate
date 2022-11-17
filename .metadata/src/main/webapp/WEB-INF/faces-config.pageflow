@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf16686844837090" configfile="/BetsJSF2/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="CreateQuestion.xhtml" x="261" y="348" id="pf16686847975981" outlinks="pf16686847975982" inlinks="pf16686847975983" path="/CreateQuestion.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="FindQuestions.xhtml" x="264" y="204" id="pf16686847975984" outlinks="pf16686847975985" inlinks="pf16686847975986" path="/FindQuestions.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="main.xhtml" x="72" y="269" id="pf16686847975987" outlinks="pf16686847975986 pf16686847975983" inlinks="pf16686847975982 pf16686847975985" path="/main.xhtml"/>
+  <links id="pf16686847975986" target="pf16686847975984" source="pf16686847975987" outcome="find"/>
+  <links id="pf16686847975983" target="pf16686847975981" source="pf16686847975987" outcome="create"/>
+  <links id="pf16686847975982" target="pf16686847975987" source="pf16686847975981" outcome="atzera"/>
+  <links id="pf16686847975985" target="pf16686847975987" source="pf16686847975984" outcome="atzera"/>
+</pageflow:Pageflow>
