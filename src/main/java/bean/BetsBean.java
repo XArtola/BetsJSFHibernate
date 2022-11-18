@@ -1,5 +1,7 @@
 package bean;
 
+
+import java.text.ParseException;
 import java.util.Date;
 import java.util.Vector;
 
@@ -43,12 +45,11 @@ public class BetsBean {
 		return "atzera";
 	}
 
-	public void onDateSelect(SelectEvent event) {
+	public void onDateSelect(SelectEvent event) throws ParseException {
 
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Data aukeratua: " + event.getObject()));
-
-		Vector<Event> gertaerak = facadeBL.getEvents(data);
-		
+		Vector<Event> gertaerak = facadeBL.getEvents((Date)event.getObject());
+				
 		for( int i= 0; i < gertaerak.size(); i++) {
 			
 			

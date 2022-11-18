@@ -20,16 +20,31 @@
 				</tr>
 
 				<tr>
-				<!--  	<p:calendar id="data" value="#{bets.data}" navigator="false"
-						mode="inline"> -->
-						
-						<p:calendar id="data" navigator="false" mode="inline">
+					<p:calendar id="data" value="#{bets.data}" navigator="false"
+						mode="inline">
+
 						<p:ajax event="dateSelect" listener="#{bets.onDateSelect}"
 							update="mezuak"></p:ajax>
 					</p:calendar>
 					<!-- <h:message id="mezuak" for="data" style="color:red" />-->
-				<h:messages id="mezuak" style="color:blue" />
+					<h:messages id="mezuak" style="color:blue" />
 
+				</tr>
+
+
+				<tr>
+
+					<p:dataTable id="taulaPF" value="#{bets.motak}" var="item"
+						selectionMode="single" selection="#{bets.mota}" border="1"
+						rowKey="#{item.kodea}">
+						<p:ajax event="rowSelect" listener="#{login.onEventSelect}"
+							update=":nireForm:aukeratua :nireForm:mezuak"></p:ajax>
+						<f:facet name="header">Events </f:facet>
+						<p:column headerText="Kodea">#{item.kodea}</p:column>
+						<p:column headerText="Mota">#{item.event}</p:column>
+					</p:dataTable>
+					
+					
 				</tr>
 
 			</table>
@@ -37,8 +52,8 @@
 	</div>
 	<div>
 
-		
-	<!-- 	<h:dataTable id="taula" value="#{login.motak}" var="item" border="1">
+
+		<!-- 	<h:dataTable id="taula" value="#{login.motak}" var="item" border="1">
 			<f:facet name="header">Events</f:facet>
 			<h:column>
 				<f:facet name="header">Kodea</f:facet>
