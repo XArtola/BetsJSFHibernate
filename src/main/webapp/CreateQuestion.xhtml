@@ -20,55 +20,54 @@
 		crossorigin="anonymous"></script>
 </h:head>
 <h:body>
-	<div>
+	<h:form id="form" class="row">
+		<div class="col-md-6 col-sm-12 d-flex justify-content-center">
+			<p:calendar id="data" value="#{bets.data}" navigator="false"
+				mode="inline">
+				<p:ajax event="dateSelect" listener="#{bets.onDateSelect}"
+					update="mezuak :form:taulaEvent :form:zerrenda"></p:ajax>
+			</p:calendar>
+			<h:messages id="mezuak" style="color:blue" />
+		</div>
 
-		<table>
-			<tr>
-				<td>
-					<h4>Event date</h4>
-				</td>
-			</tr>
 
-			<tr>
-			<p:calendar id="data" value="#{login.data}" navigator="false" mode="inline">
-				</p:calendar>
+		<!-- <h:selectOneMenu id="aukeraketa" value="#{bets.gertaerak}"
+				converter="omnifaces.SelectItemsConverter">  -->
 
-			</tr>
+		<h:selectOneMenu id="zerrenda" value="#{bets.gertaera}">
+			<f:selectItems value="#{bets.gertaerak}" />
+		</h:selectOneMenu>
 
-		</table>
+	<!-- 	<div class="col-md-6 col-sm-12">
+			<p:dataTable id="taulaEvent" value="#{bets.gertaerak}" var="item"
+				selectionMode="single" selection="#{bets.gertaera}" border="1"
+				rowKey="#{item.eventNumber}">
+				<p:ajax event="rowSelect" listener="#{bets.onEventSelect}"
+					update=":form:taulaQuestion"></p:ajax>
+				<f:facet name="header">Events </f:facet>
+				<p:column headerText="Kodea">#{item.eventNumber}</p:column>
+				<p:column headerText="Mota">#{item.description}</p:column>
+			</p:dataTable>
+		</div>  -->
 
-	</div>
-	<div>
+		<div class="col-md-6 col-sm-12">
+			<p:dataTable id="taulaQuestion" value="#{bets.galderak}" var="item"
+				selectionMode="single" selection="#{bets.galdera}" border="1"
+				rowKey="#{item.questionNumber}">
+				<f:facet name="header">Questions for the event </f:facet>
+				<p:column headerText="#Qeustion">#{item.questionNumber}</p:column>
+				<p:column headerText="Question">#{item.question}</p:column>
+			</p:dataTable>
+		</div>
+		
+		
+		<h:inputText id="Question" value="#{bets.galdera}"></h:inputText>
+		<h:inputText id="Min bet" value="#{bets.min_bet}"></h:inputText>
+		
+				<h:commandButton value="Gorde galdera" action="#{bets.gordeGaldera}" />
+		
 
-		<h4>Events:</h4>
-		<form action="/action_page.php">
-			<label for="cars">Choose a car:</label> <select name="cars" id="cars">
-				<option value="volvo">Volvo</option>
-				<option value="saab">Saab</option>
-				<option value="opel">Opel</option>
-				<option value="audi">Audi</option>
-			</select> <input type="submit" value="Submit"></input>
-		</form>
-
-	</div>
-
-	<div>
-
-		<h4>Questions for the event ...</h4>
-
-		<table>
-			<tr>
-				<td>Question</td>
-				<td><input type="text"></input></td>
-			</tr>
-			<tr>
-				<td>Min bet</td>
-				<td><input type="text"></input></td>
-			</tr>
-
-		</table>
-
-	</div>
+	</h:form>
 
 	<h:form>
 		<h:commandButton value="Back" action="#{bets.atzera}" />

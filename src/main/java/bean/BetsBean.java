@@ -29,8 +29,10 @@ public class BetsBean {
 
 	Question galdera;
 
+	int min_bet;
+
 	public BetsBean() {
-		
+
 		facadeBL = FacadeBean.getBusinessLogic();
 
 	}
@@ -75,6 +77,14 @@ public class BetsBean {
 		this.galdera = galdera;
 	}
 
+	public int getMin_bet() {
+		return min_bet;
+	}
+
+	public void setMin_bet(int min_bet) {
+		this.min_bet = min_bet;
+	}
+
 	public String create() {
 
 		return "create";
@@ -88,7 +98,7 @@ public class BetsBean {
 		return "atzera";
 	}
 
-	public void onDateSelect(SelectEvent event){
+	public void onDateSelect(SelectEvent event) {
 
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Data aukeratua: " + event.getObject()));
 		gertaerak = facadeBL.getEvents((Date) event.getObject());
@@ -96,9 +106,13 @@ public class BetsBean {
 	}
 
 	public void onEventSelect(SelectEvent event) {
-		
+
 		Event eventua = (Event) event.getObject();
 		galderak = eventua.getQuestions();
+
+	}
+
+	public void gordeGaldera() {
 
 	}
 
