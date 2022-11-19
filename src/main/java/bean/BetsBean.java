@@ -29,7 +29,7 @@ public class BetsBean {
 
 	Question galdera;
 
-	int min_bet;
+	int minBet;
 
 	public BetsBean() {
 
@@ -77,12 +77,12 @@ public class BetsBean {
 		this.galdera = galdera;
 	}
 
-	public int getMin_bet() {
-		return min_bet;
+	public int getMinBet() {
+		return minBet;
 	}
 
-	public void setMin_bet(int min_bet) {
-		this.min_bet = min_bet;
+	public void setMinBet(int minBet) {
+		this.minBet = minBet;
 	}
 
 	public String create() {

@@ -38,7 +38,7 @@
 			<f:selectItems value="#{bets.gertaerak}" />
 		</h:selectOneMenu>
 
-	<!-- 	<div class="col-md-6 col-sm-12">
+		<div class="col-md-6 col-sm-12">
 			<p:dataTable id="taulaEvent" value="#{bets.gertaerak}" var="item"
 				selectionMode="single" selection="#{bets.gertaera}" border="1"
 				rowKey="#{item.eventNumber}">
@@ -48,7 +48,7 @@
 				<p:column headerText="Kodea">#{item.eventNumber}</p:column>
 				<p:column headerText="Mota">#{item.description}</p:column>
 			</p:dataTable>
-		</div>  -->
+		</div> 
 
 		<div class="col-md-6 col-sm-12">
 			<p:dataTable id="taulaQuestion" value="#{bets.galderak}" var="item"
@@ -62,7 +62,7 @@
 		
 		
 		<h:inputText id="Question" value="#{bets.galdera}"></h:inputText>
-		<h:inputText id="Min bet" value="#{bets.min_bet}"></h:inputText>
+		<h:inputText id="Min_bet" value="#{bets.minBet}"></h:inputText>
 		
 				<h:commandButton value="Gorde galdera" action="#{bets.gordeGaldera}" />
 		
