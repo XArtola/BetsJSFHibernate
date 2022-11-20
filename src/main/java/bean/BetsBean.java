@@ -14,6 +14,8 @@ import org.primefaces.event.SelectEvent;
 import businessLogic.BLFacade;
 import domain.Event;
 import domain.Question;
+import exceptions.EventFinished;
+import exceptions.QuestionAlreadyExist;
 
 public class BetsBean {
 
@@ -30,6 +32,8 @@ public class BetsBean {
 	Question galdera;
 
 	int minBet;
+	
+	String question;
 
 	public BetsBean() {
 
@@ -76,6 +80,15 @@ public class BetsBean {
 	public void setGaldera(Question galdera) {
 		this.galdera = galdera;
 	}
+	
+	public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+
 
 	public int getMinBet() {
 		return minBet;
@@ -113,7 +126,20 @@ public class BetsBean {
 	}
 
 	public void gordeGaldera() {
-
+		
+	
+		System.out.println(gertaera.toString()+"  "+question+ "   "+ minBet );
+		
+		try {
+			facadeBL.createQuestion(gertaera, this.question, this.minBet);
+		} catch (EventFinished e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (QuestionAlreadyExist e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 }
