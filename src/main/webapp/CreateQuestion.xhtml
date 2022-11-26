@@ -8,73 +8,82 @@
 
 <h:head>
 	<title>BetsJSF aplikazioa</title>
-	<link
-		href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-		rel="stylesheet"
-		integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-		crossorigin="anonymous" />
+	<h:outputStylesheet library="css" name="style.css"/>
+	<h:outputStylesheet library="css" name="bootstrap.css"/>
+	
 	<!-- JavaScript Bundle with Popper -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 		crossorigin="anonymous"></script>
 </h:head>
-<h:body>
-	<h:form id="form" class="row">
-		<div class="col-md-6 col-sm-12 d-flex justify-content-center">
-			<p:calendar id="data" value="#{bets.data}" navigator="false"
-				mode="inline">
-				<p:ajax event="dateSelect" listener="#{bets.onDateSelect}"
-					update="mezuak :form:taulaEvent :form:zerrenda"></p:ajax>
-			</p:calendar>
-			<h:messages id="mezuak" style="color:blue" />
-		</div>
+<h:body class="p-3">
+
+	<div class="container-fluid">
+		<h:form id="form" class="row">
+			<div class="col-md-6 col-sm-12 d-flex justify-content-center pt-5">
+				<p:calendar id="data" value="#{bets.data}" navigator="false"
+					mode="inline">
+					<p:ajax event="dateSelect" listener="#{bets.onDateSelect}"
+						update=":form:taulaEvent"></p:ajax>
+				</p:calendar>
+			<!-- 	<h:messages id="mezuak" style="color:blue" />  -->
+			</div>
 
 
-		<!-- <h:selectOneMenu id="aukeraketa" value="#{bets.gertaerak}"
-				converter="omnifaces.SelectItemsConverter">  -->
+			<div class="col-md-6 col-sm-12 pt-5">
+				<p:dataTable id="taulaEvent" value="#{bets.gertaerak}" var="item"
+					selectionMode="single" selection="#{bets.gertaera}" border="1"
+					rowKey="#{item.eventNumber}">
+					<p:ajax event="rowSelect" listener="#{bets.onEventSelect}"></p:ajax>
+					<f:facet name="header">Events </f:facet>
+					<p:column headerText="Kodea">#{item.eventNumber}</p:column>
+					<p:column headerText="Mota">#{item.description}</p:column>
+				</p:dataTable>
+			</div>
 
-		<h:selectOneMenu id="zerrenda" value="#{bets.gertaerak}">
-			<f:selectItems value="#{bets.gertaerak}" />
-		</h:selectOneMenu>
 
-		<div class="col-md-6 col-sm-12">
-			<p:dataTable id="taulaEvent" value="#{bets.gertaerak}" var="item"
-				selectionMode="single" selection="#{bets.gertaera}" border="1"
-				rowKey="#{item.eventNumber}">
-				<p:ajax event="rowSelect" listener="#{bets.onEventSelect}"
-					update=":form:taulaQuestion"></p:ajax>
-				<f:facet name="header">Events </f:facet>
-				<p:column headerText="Kodea">#{item.eventNumber}</p:column>
-				<p:column headerText="Mota">#{item.description}</p:column>
-			</p:dataTable>
-		</div> 
+			<!-- 	<div class="col-md-6 col-sm-12">
+				<h:selectOneMenu id="zerrenda" value="#{bets.gertaera}">
+					<f:selectItems value="#{bets.gertaerak}"/>
+				</h:selectOneMenu>
+			</div>  -->
 
-		<div class="col-md-6 col-sm-12">
-			<p:dataTable id="taulaQuestion" value="#{bets.galderak}" var="item"
-				selectionMode="single" selection="#{bets.galdera}" border="1"
-				rowKey="#{item.questionNumber}">
-				<f:facet name="header">Questions for the event </f:facet>
-				<p:column headerText="#Qeustion">#{item.questionNumber}</p:column>
-				<p:column headerText="Question">#{item.question}</p:column>
-			</p:dataTable>
-		</div>
+
 		</h:form>
-		<h:form>
+		<h:form class="row ml-auto mr-auto pt-5">
+			
+			<span class="pt-2 pb-2 col-12 d-flex justify-content-center"> 
+			<label for="Question" >Question:</label>
+			<h:inputText id="Question" class="mx-2" value="#{bets.question}"></h:inputText>
+			</span>
+
+			<span class="pt-2 pb-2 col-12 d-flex justify-content-center">
+			<label for="Min_bet"> Min bet:</label>
+			<h:inputText id="Min_bet" class="mx-2" value="#{bets.minBet}"></h:inputText>
+			</span>
+			
+			<span class="pt-2 pb-2 col-12 d-flex justify-content-center">
+			<h:commandButton class="btn btn-primary" value="Gorde galdera"
+					action="#{bets.gordeGaldera}" />
+			</span>
+			
+
+		</h:form>
+
+		<h:form class="row pt-5">
+			
+			<span class="pt-2 pb-2 col-12 d-flex justify-content-center">
 		
-		<h:inputText id="Question" value="#{bets.question}"></h:inputText>
-		<h:inputText id="Min_bet" value="#{bets.minBet}"></h:inputText>
+				<h:commandButton class="btn btn-primary" value="Back" action="#{bets.atzera}" />
+			</span>
+		</h:form>
 		
-				<h:commandButton value="Gorde galdera" action="#{bets.gordeGaldera}" />
-		
+		<span class="row pt-5 d-flex justify-content-center ">
+			<h:messages class="h4 border border-danger bg-danger text-white" id="mezuak" style="color:blue" /> 
+		</span>
 
-	</h:form>
-
-	<h:form>
-		<h:commandButton value="Back" action="#{bets.atzera}" />
-	</h:form>
-
-
+	</div>
 </h:body>
 
 </html>

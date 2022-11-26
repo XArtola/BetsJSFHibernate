@@ -8,12 +8,9 @@
 
 <h:head>
 	<title>BetsJSF aplikazioa</title>
+	<h:outputStylesheet library="css" name="style.css"/>
 	<!-- CSS only -->
-	<link
-		href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-		rel="stylesheet"
-		integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-		crossorigin="anonymous" />
+	<h:outputStylesheet library="css" name="bootstrap.css"/>
 	<!-- JavaScript Bundle with Popper -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
@@ -21,18 +18,18 @@
 		crossorigin="anonymous"></script>
 </h:head>
 <h:body>
-	<div class="container-fluid">
+	<div class="container-fluid p-3">
 		<h:form id="form" class="row">
-			<div class="col-md-6 col-sm-12 d-flex justify-content-center">
+			<div class="col-md-6 col-sm-12 d-flex justify-content-center pt-5">
 				<p:calendar id="data" value="#{bets.data}" navigator="false"
 					mode="inline">
 					<p:ajax event="dateSelect" listener="#{bets.onDateSelect}"
-						update="mezuak :form:taulaEvent"></p:ajax>
-				</p:calendar>
-				<h:messages id="mezuak" style="color:blue" />
+						update=":form:taulaEvent"></p:ajax>
+				</p:calendar> 
+				
 			</div>
 
-			<div class="col-md-6 col-sm-12">
+			<div class="col-md-6 col-sm-12 pt-5">
 				<p:dataTable id="taulaEvent" value="#{bets.gertaerak}" var="item"
 					selectionMode="single" selection="#{bets.gertaera}" border="1"
 					rowKey="#{item.eventNumber}">
@@ -44,7 +41,7 @@
 				</p:dataTable>
 			</div>
 
-			<div class="col-md-6 col-sm-12">
+			<div class="col-sm-12 d-flex justify-content-center pt-5">
 				<p:dataTable id="taulaQuestion" value="#{bets.galderak}" var="item"
 					selectionMode="single" selection="#{bets.galdera}" border="1"
 					rowKey="#{item.questionNumber}">
@@ -61,6 +58,5 @@
 		<h:commandButton class="btn btn-primary" value="Back"
 			action="#{bets.atzera}" />
 	</h:form>
-
 </h:body>
 </html>

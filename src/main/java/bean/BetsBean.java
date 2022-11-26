@@ -32,7 +32,7 @@ public class BetsBean {
 	Question galdera;
 
 	int minBet;
-	
+
 	String question;
 
 	public BetsBean() {
@@ -80,7 +80,7 @@ public class BetsBean {
 	public void setGaldera(Question galdera) {
 		this.galdera = galdera;
 	}
-	
+
 	public String getQuestion() {
 		return question;
 	}
@@ -88,7 +88,6 @@ public class BetsBean {
 	public void setQuestion(String question) {
 		this.question = question;
 	}
-
 
 	public int getMinBet() {
 		return minBet;
@@ -125,21 +124,43 @@ public class BetsBean {
 
 	}
 
+	/*
+	 * public void onEventSelectLista(SelectEvent event) {
+	 * 
+	 * System.out.println("fahbdsklfbskljsbdfklbbdfshklbdf");
+	 * 
+	 * 
+	 * 
+	 * gertaera = (Event) event.getObject();
+	 * 
+	 * System.out.println(gertaera.toString());
+	 * 
+	 * }
+	 */
+
 	public void gordeGaldera() {
-		
-	
-		System.out.println(gertaera.toString()+"  "+question+ "   "+ minBet );
-		
-		try {
-			facadeBL.createQuestion(gertaera, this.question, this.minBet);
-		} catch (EventFinished e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (QuestionAlreadyExist e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+		// System.out.println(gertaera.toString()+" "+question+ " "+ minBet );
+
+		if (gertaera == null) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Errorea: Gertaera bat aukeratu behar da"));
 		}
-		
+
+		else {
+
+			try {
+				facadeBL.createQuestion(gertaera, this.question, this.minBet);
+			} catch (EventFinished e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (QuestionAlreadyExist e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+
 	}
 
 }
