@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@IMPORT url("#{resource['css:style.css']}");
 /*!
  * Bootstrap  v5.2.3 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
@@ -8179,6 +8180,11 @@ textarea.form-control-lg {
   background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
 }
 
+/*.bg-bets {
+  --bs-bg-opacity: 1;
+  background-color: rgb(232, 227, 226) !important;
+}*/
+
 .bg-secondary {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important;
@@ -10873,6 +10879,7 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+  
 }
 
 /*# sourceMappingURL=bootstrap.css.map */

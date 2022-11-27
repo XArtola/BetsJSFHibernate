@@ -17,8 +17,8 @@
 		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 		crossorigin="anonymous"></script>
 </h:head>
-<h:body>
-	<div class="container-fluid p-3">
+<h:body style="background-color: rgb(232, 227, 226)" class="p-3">
+	<div class="container-fluid" style="background-color: white; border-radius: 2em">
 		<h:form id="form" class="row">
 			<div class="col-md-6 col-sm-12 d-flex justify-content-center pt-5">
 				<p:calendar id="data" value="#{bets.data}" navigator="false"
@@ -52,11 +52,14 @@
 			</div>
 
 		</h:form>
-	</div>
-
-	<h:form class="d-flex justify-content-center">
+		
+		
+		<h:form class="d-flex justify-content-center pb-4 pt-3">
 		<h:commandButton class="btn btn-primary" value="Back"
 			action="#{bets.atzera}" />
 	</h:form>
+	</div>
+
+	
 </h:body>
 </html>
