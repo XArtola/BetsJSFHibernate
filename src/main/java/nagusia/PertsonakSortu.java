@@ -6,14 +6,12 @@ import java.util.List;
 import org.hibernate.Session;
 
 import eredua.HibernateUtil;
-import eredua.domeinua.BetsGertaera;
-import eredua.domeinua.BetsPertsona;
+import eredua.domeinua.Pertsona;
 
 public class PertsonakSortu {
 
 	public PertsonakSortu() {
 	}
-	
 	
 	private long id;
 	private String izena;
@@ -24,7 +22,7 @@ public class PertsonakSortu {
 	private void createAndStoreBetsPertsona(String izena, String pasahitza, int adina) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		BetsPertsona p = new BetsPertsona();
+		Pertsona p = new Pertsona();
 		p.setId(adina);
 		p.setIzena(izena);
 		p.setPasahitza(pasahitza);
@@ -50,7 +48,7 @@ public class PertsonakSortu {
 		System.out.println("Pertsonen zerrenda:");
 		List pertsonak = ps.pertsonakZerrendatu();
 		for (int i = 0; i < pertsonak.size(); i++) {
-			BetsPertsona p = (BetsPertsona) pertsonak.get(i);
+			Pertsona p = (Pertsona) pertsonak.get(i);
 			System.out.println("Id: " + p.getId() + " Izena: " + p.getIzena() + " Pasahitza: " + p.getPasahitza() + " Adina: " + p.getAdina());
 		}
 	}

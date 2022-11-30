@@ -15,10 +15,8 @@
   <property name="hibernate.hbm2ddl.auto">update</property>
   <property name="hibernate.show_sql">true</property>
   <property name="hibernate.format_sql">true</property>
-  <mapping class="eredua.domeinua.BetsGertaera"/>
-  <mapping class="eredua.domeinua.BetsGaldera"/>
-  <mapping class="eredua.domeinua.BetsPertsona"/>
-  
-  
+  <mapping class="eredua.domeinua.Pertsona"/>
+  <mapping class="eredua.domeinua.Event"/>
+  <mapping class="eredua.domeinua.Question"/>
  </session-factory>
 </hibernate-configuration>

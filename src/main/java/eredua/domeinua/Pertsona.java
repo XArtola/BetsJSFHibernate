@@ -7,17 +7,17 @@ import javax.persistence.Id;
 import org.hibernate.annotations.Entity;
 
 @Entity
-public class BetsPertsona {
-	
+public class Pertsona {
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String izena;
 	private String pasahitza;
 	private int adina;
-	
-	public BetsPertsona(){
-		
+
+	public Pertsona() {
+
 	}
 
 	public long getId() {
@@ -52,5 +52,4 @@ public class BetsPertsona {
 		this.adina = adina;
 	}
 
-	
 }

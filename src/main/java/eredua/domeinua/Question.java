@@ -1,20 +1,27 @@
 package eredua.domeinua;
 
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 @Entity
-public class BetsGaldera {
+public class Question {
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String question; 
+	private String question;
 	private float betMinimum;
 	private String result;
 	
-	public BetsGaldera() {}
+	@ManyToOne(targetEntity=Event.class, fetch=FetchType.EAGER)
+	private Event event;
+
+	public Question() {
+	}
 
 	public Long getId() {
 		return id;
@@ -46,6 +53,14 @@ public class BetsGaldera {
 
 	public void setResult(String result) {
 		this.result = result;
+	}
+
+	public Event getEvent() {
+		return event;
+	}
+
+	public void setEvent(Event event) {
+		this.event = event;
 	}
 
 }

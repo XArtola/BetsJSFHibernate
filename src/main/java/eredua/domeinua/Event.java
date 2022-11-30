@@ -1,20 +1,28 @@
 package eredua.domeinua;
 
 import java.util.Date;
-import javax.persistence.Id;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
-public class BetsGertaera {
+public class Event {
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String deskribapena;
 	private Date data;
+	@OneToMany(targetEntity=Question.class, mappedBy="event", cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
+	private Set<Question> questions;
 
-	public BetsGertaera() {
+	public Event() {
 	}
 
 	public Long getId() {
@@ -40,4 +48,15 @@ public class BetsGertaera {
 	public void setData(Date data) {
 		this.data = data;
 	}
+
+	public Set<Question> getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(Set<Question> questions) {
+		this.questions = questions;
+	}
+
+	
+
 }
