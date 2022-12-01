@@ -23,11 +23,11 @@ public class BetsBean {
 
 	BLFacade facadeBL;
 
-	Vector<Event> gertaerak;
+	List<Event> gertaerak;
 
 	Event gertaera;
 
-	Vector<Question> galderak;
+	List<Question> galderak;
 
 	Question galdera;
 
@@ -49,7 +49,7 @@ public class BetsBean {
 		this.data = data;
 	}
 
-	public Vector<Event> getGertaerak() {
+	public List<Event> getGertaerak() {
 		return gertaerak;
 	}
 
@@ -65,7 +65,7 @@ public class BetsBean {
 		this.gertaera = gertaera;
 	}
 
-	public Vector<Question> getGalderak() {
+	public List<Question> getGalderak() {
 		return galderak;
 	}
 

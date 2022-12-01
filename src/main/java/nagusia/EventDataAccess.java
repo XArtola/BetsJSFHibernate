@@ -1,16 +1,15 @@
 package nagusia;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Vector;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import configuration.UtilDate;
-import domain.Event;
-import domain.Question;
+
 import eredua.HibernateUtil;
+import eredua.domeinua.Event;
+import eredua.domeinua.Question;
 
 public class EventDataAccess {
 

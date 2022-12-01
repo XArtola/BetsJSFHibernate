@@ -8,7 +8,7 @@ import java.util.Vector;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import config.UtilDate;
+import configuration.UtilDate;
 import eredua.HibernateUtil;
 import eredua.domeinua.Event;
 import eredua.domeinua.Question;
@@ -109,7 +109,7 @@ public class HibernateDataAccess implements DataAccessInterface {
 		session.beginTransaction();
 
 		Query qr = session.createQuery("from Event where id= :eventId");
-		Event ev = (Event) session.get(Event.class, event);
+		Event ev = (Event)session.get(Event.class, event.getId());
 
 		q.setEvent(ev);
 		session.persist(q);

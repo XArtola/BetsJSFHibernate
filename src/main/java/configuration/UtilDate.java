@@ -1,4 +1,4 @@
-package config;
+package configuration;
 
 import java.util.Calendar;
 import java.util.Date;

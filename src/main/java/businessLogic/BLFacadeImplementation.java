@@ -4,26 +4,23 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
-import javax.jws.WebMethod;
-import javax.jws.WebService;
 
-import configuration.ConfigXML;
+//import configuration.ConfigXML;
 import dataAccess.DataAccessInterface;
-import domain.Question;
-import domain.Event;
+import eredua.domeinua.Event;
+import eredua.domeinua.Question;
 import exceptions.EventFinished;
 import exceptions.QuestionAlreadyExist;
 
 /**
  * It implements the business logic as a web service.
  */
-@WebService(endpointInterface = "businessLogic.BLFacade")
 public class BLFacadeImplementation  implements BLFacade {
 	DataAccessInterface dbManager;
 
 	public BLFacadeImplementation()  {		
 		System.out.println("Creating BLFacadeImplementation instance");
-		ConfigXML c=ConfigXML.getInstance();
+	//	ConfigXML c=ConfigXML.getInstance();
 		
 		/*if (c.getDataBaseOpenMode().equals("initialize")) {
 			
@@ -37,7 +34,7 @@ public class BLFacadeImplementation  implements BLFacade {
     public BLFacadeImplementation(DataAccessInterface da)  {
 		
 		System.out.println("Creating BLFacadeImplementation instance with DataAccess parameter");
-		ConfigXML c=ConfigXML.getInstance();
+	//	ConfigXML c=ConfigXML.getInstance();
 		
 		if (c.getDataBaseOpenMode().equals("initialize")) {
 			da.emptyDatabase();
@@ -60,7 +57,6 @@ public class BLFacadeImplementation  implements BLFacade {
 	 * @throws EventFinished if current data is after data of the event
  	 * @throws QuestionAlreadyExist if the same question already exists for the event
 	 */
-   @WebMethod
    public Question createQuestion(Event event, String question, float betMinimum) throws EventFinished, QuestionAlreadyExist{
 	   
 	    //The minimum bed must be greater than 0
@@ -85,7 +81,6 @@ public class BLFacadeImplementation  implements BLFacade {
 	 * @param date in which events are retrieved
 	 * @return collection of events
 	 */
-    @WebMethod	
 	public Vector<Event> getEvents(Date date)  {
 		dbManager.open();
 		Vector<Event>  events=dbManager.getEvents(date);
@@ -100,7 +95,7 @@ public class BLFacadeImplementation  implements BLFacade {
 	 * @param date of the month for which days with events want to be retrieved 
 	 * @return collection of dates
 	 */
-	@WebMethod public Vector<Date> getEventsMonth(Date date) {
+	public Vector<Date> getEventsMonth(Date date) {
 		dbManager.open();
 		Vector<Date>  dates=dbManager.getEventsMonth(date);
 		dbManager.close();
@@ -121,7 +116,6 @@ public class BLFacadeImplementation  implements BLFacade {
 	 * This method invokes the data access to initialize the database with some events and questions.
 	 * It is invoked only when the option "initialize" is declared in the tag dataBaseOpenMode of resources/config.xml file
 	 */	
-    @WebMethod	
 	 public void initializeBD(){
     	dbManager.open();
 		dbManager.initializeDB();

@@ -1,6 +1,7 @@
 package eredua.domeinua;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -20,7 +21,7 @@ public class Event {
 	private String deskribapena;
 	private Date data;
 	@OneToMany(targetEntity=Question.class, mappedBy="event", cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
-	private Set<Question> questions;
+	private List<Question> questions;
 
 	public Event() {
 	}
@@ -49,11 +50,11 @@ public class Event {
 		this.data = data;
 	}
 
-	public Set<Question> getQuestions() {
+	public List<Question> getQuestions() {
 		return questions;
 	}
 
-	public void setQuestions(Set<Question> questions) {
+	public void setQuestions(List<Question> questions) {
 		this.questions = questions;
 	}
 
