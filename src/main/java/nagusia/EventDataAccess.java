@@ -52,5 +52,12 @@ public class EventDataAccess {
 	 * 
 	 * }
 	 */
+	
+	public static void main(String[] args) {
+		
+		
+		
+		
+	}
 
 }

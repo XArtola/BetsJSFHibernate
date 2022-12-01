@@ -12,8 +12,8 @@ import javax.faces.context.FacesContext;
 import org.primefaces.event.SelectEvent;
 
 import businessLogic.BLFacade;
-import domain.Event;
-import domain.Question;
+import eredua.domeinua.Event;
+import eredua.domeinua.Question;
 import exceptions.EventFinished;
 import exceptions.QuestionAlreadyExist;
 

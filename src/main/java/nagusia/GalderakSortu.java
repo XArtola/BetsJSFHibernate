@@ -42,60 +42,6 @@ public class GalderakSortu {
 	}
 	
 	
-/*	e.setErabiltzailea((Erabiltzailea) session.get(Erabiltzailea.class, erabiltzailea));
-
-	
-	public Question createAndStoreQuestion(Event event, String question, float betMinimun) {
-
-		Question q = new Question();
-		q.setQuestion(question);
-		q.setBetMinimum(betMinimun);
-
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		session.beginTransaction();
-
-		Query qr = session.createQuery("from Event where id= :eventId");
-		qr.setParameter("eventId", eventId);
-		List<Event> events = qr.list();
-		//Event ev = 	(Event) session.get(Event.class, event);
-
-
-		System.out.println("JASOTAKOA:   "+ev.getDeskribapena());
-		
-		Set<Question> questions = ev.getQuestions();
-		
-
-		questions.add(q);
-
-		ev.setQuestions(questions);
-		
-		System.out.println("CCCCCCCCC"+ev.getQuestions());
-
-		
-		session.persist(ev);
-		session.getTransaction().commit();
-
-		// Vector<Event> events = (Vector<Event>) qr.list();
-
-		/*
-		 * try {
-		 * 
-		 * 
-		 * 
-		 * 
-		 * q.setErabiltzailea((Erabiltzailea) session.get(Erabiltzailea.class,
-		 * erabiltzailea)); q.setLogin(login); q.setData(data); session.persist(e);
-		 * session.getTransaction().commit(); } catch
-		 * (org.hibernate.PropertyValueException ex) {
-		 * System.out.println("Errorea: data falta da "); e = null;
-		 * session.getTransaction().rollback(); e = null; } catch (Exception ex) {
-		 * System.out.println("Errorea: erabiltzailea ez da existitzen: " +
-		 * ex.toString()); e = null; } return e; }
-		 */
-		
-/*		return q;
-
-	}*/
 
 	
 	
@@ -109,44 +55,20 @@ public class GalderakSortu {
 
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
+		
+		
+		
 
 		Query qr = session.createQuery("from Event where id= :eventId");
 		qr.setParameter("eventId", eventId);
 		List<Event> events = qr.list();
 		Event ev = events.get(0);
-
-		System.out.println("JASOTAKOA:   "+ev.getDeskribapena());
 		
-		Set<Question> questions = ev.getQuestions();
+		q.setEvent(ev);
 		
-
-		questions.add(q);
-
-		ev.setQuestions(questions);
-		
-		System.out.println("CCCCCCCCC"+ev.getQuestions());
-
-		
-		session.persist(ev);
+		session.persist(q);
 		session.getTransaction().commit();
 
-		// Vector<Event> events = (Vector<Event>) qr.list();
-
-		/*
-		 * try {
-		 * 
-		 * 
-		 * 
-		 * 
-		 * q.setErabiltzailea((Erabiltzailea) session.get(Erabiltzailea.class,
-		 * erabiltzailea)); q.setLogin(login); q.setData(data); session.persist(e);
-		 * session.getTransaction().commit(); } catch
-		 * (org.hibernate.PropertyValueException ex) {
-		 * System.out.println("Errorea: data falta da "); e = null;
-		 * session.getTransaction().rollback(); e = null; } catch (Exception ex) {
-		 * System.out.println("Errorea: erabiltzailea ez da existitzen: " +
-		 * ex.toString()); e = null; } return e; }
-		 */
 		
 		return q;
 
@@ -164,16 +86,16 @@ public class GalderakSortu {
 		GalderakSortu g = new GalderakSortu();
 		//GertaerakSortu e = new GertaerakSortu();
 		System.out.println("Galderen sorkuntza:");
-	/*	g.createAndStoreQuestion("Zeinek irabaziko du?", 5, null);
+		/*g.createAndStoreQuestion("Zeinek irabaziko du?", 5, null);
 		g.createAndStoreQuestion("Zein izango da emaitza?", 6, null);
 		g.createAndStoreQuestion("Zenbat gol sartuko dituzte", 7, null);*/
 		
 		g.createAndStoreQuestion(1, "Zeinek irabaziko du partidua?",1);
-	/*	g.createAndStoreQuestion(1,"Zeinek sartuko du lehenengo gola?",2);
+		g.createAndStoreQuestion(1,"Zeinek sartuko du lehenengo gola?",2);
 		g.createAndStoreQuestion(11,"Zeinek irabaziko du partidua?",1);
 		g.createAndStoreQuestion(11,"Zenbat gol sartuko dira?",2);
 		g.createAndStoreQuestion(17,"Zeinek irabaziko du partidua?",1);
-		g.createAndStoreQuestion(17,"Golak sartuko dira lehenengo zatian?",2);*/
+		g.createAndStoreQuestion(17,"Golak sartuko dira lehenengo zatian?",2);
 		
 		System.out.println("Galderen zerrenda:");
 		List galderak = g.galderakZerrendatu();

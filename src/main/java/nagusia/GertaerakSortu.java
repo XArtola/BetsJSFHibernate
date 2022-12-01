@@ -13,7 +13,7 @@ public class GertaerakSortu {
 	public GertaerakSortu() {
 	}
 
-	private void createAndStoreEvent(String deskribapena, Date data) {
+	public void createAndStoreEvent(String deskribapena, Date data) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		Event e = new Event();
