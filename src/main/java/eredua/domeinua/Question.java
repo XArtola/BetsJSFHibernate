@@ -2,13 +2,13 @@ package eredua.domeinua;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import org.hibernate.annotations.Entity;
 
 @Entity
 public class Question implements Serializable {
@@ -39,7 +39,7 @@ public class Question implements Serializable {
 		this.question = query;
 		this.betMinimum=betMinimum;
 
-		//this.event = event;
+		this.event = event;
 	}
 
 	/**

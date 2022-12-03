@@ -13,6 +13,7 @@ public class FacadeBean {
 			facadeInterface = new BLFacadeImplementation(new HibernateDataAccess());
 		} catch (Exception e) {
 			System.out.println("FacadeBean: negozioaren logika sortzean errorea: " + e.getMessage());
+			e.printStackTrace();
 		}
 	}
 

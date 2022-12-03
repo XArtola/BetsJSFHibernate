@@ -3,7 +3,6 @@ package businessLogic;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Vector;
 
 
 //import configuration.ConfigXML;
@@ -19,34 +18,20 @@ import exceptions.QuestionAlreadyExist;
 public class BLFacadeImplementation  implements BLFacade {
 	DataAccessInterface dbManager;
 
-	public BLFacadeImplementation()  {		
+	public BLFacadeImplementation() {
 		System.out.println("Creating BLFacadeImplementation instance");
-	//	ConfigXML c=ConfigXML.getInstance();
-		
-		/*if (c.getDataBaseOpenMode().equals("initialize")) {
-			
-		    dbManager=new DataAccessInterface(new ObjectDbDAOManager());
-			dbManager.initializeDB();
-			dbManager.close();
-			}
-		*/
 	}
-	
-    public BLFacadeImplementation(DataAccessInterface da)  {
-		
-		System.out.println("Creating BLFacadeImplementation instance with DataAccess parameter");
-	//	ConfigXML c=ConfigXML.getInstance();
-		
-	//	if (c.getDataBaseOpenMode().equals("initialize")) {
-			da.emptyDatabase();
-			da.open();
-			da.initializeDB();
-			da.close();
 
-		//}
-		dbManager=da;		
+	public BLFacadeImplementation(DataAccessInterface da) {
+
+		System.out.println("Creating BLFacadeImplementation instance with DataAccess parameter");
+		da.emptyDatabase();
+		da.open();
+		da.initializeDB();
+		da.close();
+
+		dbManager = da;
 	}
-	
 
 	/**
 	 * This method creates a question for an event, with a question text and the minimum bet
@@ -64,7 +49,9 @@ public class BLFacadeImplementation  implements BLFacade {
 		dbManager.open();
 		Question qry=null;
 		
-	    
+	    System.out.println(event.getEventDate());
+		
+		
 		if(new Date().compareTo(event.getEventDate())>0)
 			throw new EventFinished(ResourceBundle.getBundle("Etiquetas").getString("ErrorEventHasFinished"));
 				

@@ -13,122 +13,117 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="lib/commons-beanutils-1.8.3.jar">
+	<classpathentry kind="lib" path="/LoginJSFHibernate/lib/commons-beanutils-1.8.3.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/commons-codec-1.3.jar">
+	<classpathentry kind="lib" path="/LoginJSFHibernate/lib/commons-codec-1.3.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/commons-collections-3.2.jar">
+	<classpathentry kind="lib" path="/LoginJSFHibernate/lib/commons-collections-3.2.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/commons-digester-1.8.jar">
+	<classpathentry kind="lib" path="/LoginJSFHibernate/lib/commons-digester-1.8.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/commons-discovery-0.4.jar">
+	<classpathentry kind="lib" path="/LoginJSFHibernate/lib/commons-discovery-0.4.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/commons-logging-1.1.1.jar">
+	<classpathentry kind="lib" path="/LoginJSFHibernate/lib/commons-logging-1.1.1.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/myfaces-api-2.0.2.jar">
+	<classpathentry kind="lib" path="/LoginJSFHibernate/lib/myfaces-api-2.0.2.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/myfaces-impl-2.0.2.jar">
+	<classpathentry kind="lib" path="/LoginJSFHibernate/lib/myfaces-impl-2.0.2.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/objectdb.jar">
+	<classpathentry kind="lib" path="/LoginJSFHibernate/lib/omnifaces-1.8.1.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/omnifaces-1.8.1.jar">
+	<classpathentry kind="lib" path="/LoginJSFHibernate/lib/primefaces-4.0.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/primefaces-4.0.jar">
+	<classpathentry kind="lib" path="/LoginJSFHibernate/libHibernate/jpa/hibernate-jpa-2.0-api-1.0.0.Final.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="libHibernate/jpa/hibernate-jpa-2.0-api-1.0.0.Final.jar">
+	<classpathentry kind="lib" path="/LoginJSFHibernate/libHibernate/required/antlr-2.7.6.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="libHibernate/required/antlr-2.7.6.jar">
+	<classpathentry kind="lib" path="/LoginJSFHibernate/libHibernate/required/commons-collections-3.1.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="libHibernate/required/commons-collections-3.1.jar">
+	<classpathentry kind="lib" path="/LoginJSFHibernate/libHibernate/required/dom4j-2.1.1.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="libHibernate/required/dom4j-2.1.1.jar">
+	<classpathentry kind="lib" path="/LoginJSFHibernate/libHibernate/required/javassist-3.26.0-GA.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="libHibernate/required/javassist-3.26.0-GA.jar">
+	<classpathentry kind="lib" path="/LoginJSFHibernate/libHibernate/required/jta-1.1.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="libHibernate/required/jta-1.1.jar">
+	<classpathentry kind="lib" path="/LoginJSFHibernate/libHibernate/required/slf4j-api-1.6.1.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="libHibernate/required/slf4j-api-1.6.1.jar">
+	<classpathentry kind="lib" path="/LoginJSFHibernate/libHibernate/hibernate3.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="libHibernate/hibernate3.jar">
+	<classpathentry kind="lib" path="/LoginJSFHibernate/libHibernate/log4j-1.2.14.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="libHibernate/log4j-1.2.14.jar">
+	<classpathentry kind="lib" path="/LoginJSFHibernate/libHibernate/slf4j-nop-1.6.2.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="libHibernate/slf4j-nop-1.6.2.jar">
+	<classpathentry kind="lib" path="/LoginJSFHibernate/mySQL-driverrak/mariadb-java-client-2.7.3.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="mySQL-driverrak/mariadb-java-client-2.7.3.jar">
+	<classpathentry kind="lib" path="/LoginJSFHibernate/mySQL-driverrak/mysql-connector-java-5.1.15-bin.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="mySQL-driverrak/mysql-connector-java-5.1.15-bin.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="mySQL-driverrak/mysql-connector-java-8.0.27.jar">
+	<classpathentry kind="lib" path="/LoginJSFHibernate/mySQL-driverrak/mysql-connector-java-8.0.27.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>

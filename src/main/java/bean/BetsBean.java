@@ -140,7 +140,7 @@ public class BetsBean {
 
 	public void gordeGaldera() {
 
-		// System.out.println(gertaera.toString()+" "+question+ " "+ minBet );
+		 System.out.println(gertaera.toString()+" "+question+ " "+ minBet );
 
 		if (gertaera == null) {
 			FacesContext.getCurrentInstance().addMessage(null,
@@ -152,11 +152,9 @@ public class BetsBean {
 			try {
 				facadeBL.createQuestion(gertaera, this.question, this.minBet);
 			} catch (EventFinished e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Errorea: Data hori pasata dago"));
 			} catch (QuestionAlreadyExist e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Errorea: DGaldera hori existizen da"));
 			}
 
 		}

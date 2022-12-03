@@ -1,11 +1,11 @@
 package nagusia;
 
-import eredua.HibernateUtil;
 import eredua.domeinua.Event;
 
 import org.hibernate.Session;
 
 import configuration.UtilDate;
+import dataAccess.HibernateUtil;
 
 import java.util.*;
 

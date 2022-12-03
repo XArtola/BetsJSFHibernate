@@ -8,8 +8,7 @@ import java.util.Vector;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-
-import eredua.HibernateUtil;
+import dataAccess.HibernateUtil;
 import eredua.domeinua.Event;
 import eredua.domeinua.Question;
 
