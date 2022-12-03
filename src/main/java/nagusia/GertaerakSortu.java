@@ -17,8 +17,8 @@ public class GertaerakSortu {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		Event e = new Event();
-		e.setDeskribapena(deskribapena);
-		e.setData(data);
+		e.setDescription(deskribapena);
+		e.setEventDate(data);
 		session.persist(e);
 		session.getTransaction().commit();
 	}
@@ -74,7 +74,7 @@ public class GertaerakSortu {
 		List gertaerak = e.gertaerakZerrendatu();
 		for (int i = 0; i < gertaerak.size(); i++) {
 			Event ev = (Event) gertaerak.get(i);
-			System.out.println("Id: " + ev.getId() + " Deskribapena: " + ev.getDeskribapena() + " Data: " + ev.getData());
+			System.out.println("Id: " + ev.getEventNumber() + " Deskribapena: " + ev.getDescription() + " Data: " + ev.getEventDate());
 		}
 	}
 }

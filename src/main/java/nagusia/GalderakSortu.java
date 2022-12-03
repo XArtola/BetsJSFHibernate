@@ -101,7 +101,7 @@ public class GalderakSortu {
 		List galderak = g.galderakZerrendatu();
 		for (int i = 0; i < galderak.size(); i++) {
 			Question  ga = (Question) galderak.get(i);
-			System.out.println("Id: " + ga.getId() + " Galdera: " + ga.getQuestion() + " Gutxieneko apustua:" + ga.getBetMinimum() + " Emaitza " + ga.getResult());
+			System.out.println("Id: " + ga.getQuestionNumber() + " Galdera: " + ga.getQuestion() + " Gutxieneko apustua:" + ga.getBetMinimum() + " Emaitza " + ga.getResult());
 		}
 	}
 

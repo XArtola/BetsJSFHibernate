@@ -3,7 +3,10 @@ package dataAccess;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.Vector;
+
+import javax.persistence.TypedQuery;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -18,22 +21,30 @@ import nagusia.GertaerakSortu;
 
 public class HibernateDataAccess implements DataAccessInterface {
 
+	private Session session;
+
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
+
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
 
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
+
+		HibernateUtil.getSessionFactory().close();
+		session.close();
 
 	}
 
 	@Override
 	public void emptyDatabase() {
-		
-		
+
+		session.beginTransaction();
+		// delete cascade dagoenez ez da beharrezkoa galderak borratzeko query bat
+		// egitea
+		session.createQuery("delete from Event");
 
 	}
 
@@ -101,36 +112,53 @@ public class HibernateDataAccess implements DataAccessInterface {
 	@Override
 	public Question createQuestion(Event event, String question, float betMinimum) throws QuestionAlreadyExist {
 
-		Question q = new Question();
-		q.setQuestion(question);
-		q.setBetMinimum(betMinimum);
+		System.out.println(">> DataAccess: createQuestion=> event= " + event + " question= " + question + " betMinimum="
+				+ betMinimum);
 
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Event ev = (Event) session.get(Event.class, event.getEventDate());
+
+		if (ev.DoesQuestionExists(question))
+			throw new QuestionAlreadyExist(ResourceBundle.getBundle("Etiquetas").getString("ErrorQueryAlreadyExist"));
+
 		session.beginTransaction();
 
-		Query qr = session.createQuery("from Event where id= :eventId");
-		Event ev = (Event)session.get(Event.class, event.getId());
-
-		q.setEvent(ev);
-		session.persist(q);
+		Question q = ev.addQuestion(question, betMinimum);
+		session.persist(ev); // db.persist(q) not required when CascadeType.PERSIST is added in questions
+								// property of Event class
+		// @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+		// db.getTransaction().commit();
 		session.getTransaction().commit();
-
 		return q;
 
 	}
 
 	@Override
 	public List<Event> getEvents(Date date) {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		session.beginTransaction();
 
+		System.out.println(">> DataAccess: getEvents");
+		//List<Event> res = new List<Event>();
 		Query q = session.createQuery("from Event where data= :date");
 		q.setParameter("date", date);
 
 		List<Event> events = q.list();
-
-		session.getTransaction().commit();
+		for (Event ev : events) {
+			System.out.println(ev.toString());
+			//res.add(ev);
+		}
 		return events;
+
+		/*
+		 * Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		 * session.beginTransaction();
+		 * 
+		 * Query q = session.createQuery("from Event where data= :date");
+		 * q.setParameter("date", date);
+		 * 
+		 * List<Event> events = q.list();
+		 * 
+		 * session.getTransaction().commit(); return events;
+		 * 
+		 */
 
 	}
 

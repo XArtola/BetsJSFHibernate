@@ -1,6 +1,7 @@
 package businessLogic;
 //hola
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
@@ -36,13 +37,13 @@ public class BLFacadeImplementation  implements BLFacade {
 		System.out.println("Creating BLFacadeImplementation instance with DataAccess parameter");
 	//	ConfigXML c=ConfigXML.getInstance();
 		
-		if (c.getDataBaseOpenMode().equals("initialize")) {
+	//	if (c.getDataBaseOpenMode().equals("initialize")) {
 			da.emptyDatabase();
 			da.open();
 			da.initializeDB();
 			da.close();
 
-		}
+		//}
 		dbManager=da;		
 	}
 	
@@ -81,9 +82,9 @@ public class BLFacadeImplementation  implements BLFacade {
 	 * @param date in which events are retrieved
 	 * @return collection of events
 	 */
-	public Vector<Event> getEvents(Date date)  {
+	public List<Event> getEvents(Date date)  {
 		dbManager.open();
-		Vector<Event>  events=dbManager.getEvents(date);
+		List<Event>  events=dbManager.getEvents(date);
 		dbManager.close();
 		return events;
 	}
@@ -95,9 +96,9 @@ public class BLFacadeImplementation  implements BLFacade {
 	 * @param date of the month for which days with events want to be retrieved 
 	 * @return collection of dates
 	 */
-	public Vector<Date> getEventsMonth(Date date) {
+	public List<Date> getEventsMonth(Date date) {
 		dbManager.open();
-		Vector<Date>  dates=dbManager.getEventsMonth(date);
+		List<Date>  dates=dbManager.getEventsMonth(date);
 		dbManager.close();
 		return dates;
 	}
