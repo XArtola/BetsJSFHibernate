@@ -8,8 +8,8 @@
 
 <h:head>
 	<title>BetsJSF aplikazioa</title>
-	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
 	<h:outputStylesheet library="css" name="bootstrap.css" />
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
 
 	<!-- JavaScript Bundle with Popper -->
 	<script
@@ -18,32 +18,34 @@
 		crossorigin="anonymous"></script>
 </h:head>
 <h:body style="background-color: rgb(232, 227, 226)">
+
 	<h:form>
-		<p:clock pattern="HH:mm:ss" />
-		<div class="vh-95">
 
-			<div
-				class="container mt-5 h-55 w-25 px-auto border shadow rounded pb-5"
-				style="background-color: white">
-				<h1 class="text-center pt-5 pb-5">BetsJSF</h1>
-
-				<div class="row align-middle justify-content-center pt-5">
-					<div class="col-12 d-flex justify-content-center mt-5 mb-2">
-						<h:commandButton class="text-center p-auto btn btn-primary"
-							value="Query Question" action="#{bets.find}" />
-					</div>
+		<label for="UserName">Erabiltzaile izena</label>
+		<h:inputText id="UserName" value="#{login.izena}"></h:inputText>
+		<label for="Pasahitza">Psahitza</label>
+		<h:inputText id="Pasahitza" value="#{login.pasahitza}"></h:inputText>
 
 
-					<div class="col-12 d-flex justify-content-center mt-3 mb-3">
-						<h:commandButton class="center btn btn-primary"
-							value="Create Question" action="#{bets.create}" />
+		<label for="JaiotzeData">Jaoitze data</label>
+		<p:calendar id="data" value="#{login.jaiotzeData}" navigator="true"
+			mode="popup">
+			<p:ajax event="dateSelect" listener="#{login.onDateSelect}"></p:ajax>
 
-					</div>
+		</p:calendar>
 
-				</div>
-			</div>
-		</div>
+		<h:commandButton class="btn btn-primary" value="Erregistratu"
+			action="#{login.erregistratu}" />
+
+
+
+
+
+
 	</h:form>
+
+
+
 </h:body>
 
 </html>

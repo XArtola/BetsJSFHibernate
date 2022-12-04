@@ -15,8 +15,9 @@
   <property name="hibernate.hbm2ddl.auto">create</property>
   <property name="hibernate.show_sql">true</property>
   <property name="hibernate.format_sql">true</property>
-  <mapping class="eredua.domeinua.Event"/>
-  <mapping class="eredua.domeinua.Question"/>
-  <mapping class="eredua.domeinua.Pertsona"/>
+  <mapping class="domain.Event"/>
+  <mapping class="domain.Question"/>
+  <mapping class="domain.Pertsona"/>
+  <mapping class="domain.Erabiltzailea"/>
  </session-factory>
 </hibernate-configuration>

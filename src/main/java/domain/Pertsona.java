@@ -17,9 +17,10 @@ import javax.persistence.OneToMany;
 
 @Entity
 public abstract class Pertsona {
+	
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//private Integer pertsonaId;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer pertsonaId;
 	private String izena;
 	private String pasahitza;
 	private int adina;

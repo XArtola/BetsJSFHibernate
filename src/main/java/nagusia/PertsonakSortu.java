@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.Session;
 
 import dataAccess.HibernateUtil;
+import domain.Erabiltzailea;
 import domain.Pertsona;
 
 public class PertsonakSortu {
@@ -22,8 +23,7 @@ public class PertsonakSortu {
 	private void createAndStoreBetsPertsona(String izena, String pasahitza, int adina) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		Pertsona p = new Pertsona();
-		p.setId(adina);
+		Pertsona p = new Erabiltzailea();
 		p.setIzena(izena);
 		p.setPasahitza(pasahitza);
 		p.setAdina(adina);
@@ -49,7 +49,7 @@ public class PertsonakSortu {
 		List pertsonak = ps.pertsonakZerrendatu();
 		for (int i = 0; i < pertsonak.size(); i++) {
 			Pertsona p = (Pertsona) pertsonak.get(i);
-			System.out.println("Id: " + p.getId() + " Izena: " + p.getIzena() + " Pasahitza: " + p.getPasahitza() + " Adina: " + p.getAdina());
+			System.out.println(" Izena: " + p.getIzena() + " Pasahitza: " + p.getPasahitza() + " Adina: " + p.getAdina());
 		}
 	}
 

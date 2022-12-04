@@ -137,6 +137,12 @@ public class HibernateDataAccess implements DataAccessInterface {
 			session.persist(ev18);
 			session.persist(ev19);
 			session.persist(ev20);
+			
+			
+			Erabiltzailea er1 = new Erabiltzailea("user", "pass", new Date());
+			session.persist(er1);
+			
+			
 
 			session.getTransaction().commit();
 			System.out.println("Db initialized");
@@ -256,7 +262,9 @@ public class HibernateDataAccess implements DataAccessInterface {
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public boolean existitzenDa(String izena, String pasahitza) {
+		session.beginTransaction();
 		Pertsona e = (Pertsona)session.get(Pertsona.class, izena);
+		session.getTransaction().commit();
 		if (e == null)
 			return false;
 		else {
@@ -312,7 +320,7 @@ public class HibernateDataAccess implements DataAccessInterface {
 	}
 
 	public Pertsona sortuErabiltzailea(String izena, String pasahitza, Date jaiotzeData) {
-		session.getTransaction().begin();
+		session.beginTransaction();
 		// TODO: Soilik Erabiltzaileak sortu daitezke.
 		Pertsona er = new Erabiltzailea(izena, pasahitza, jaiotzeData);
 		session.persist(er);
