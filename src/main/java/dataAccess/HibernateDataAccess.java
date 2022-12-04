@@ -14,8 +14,10 @@ import org.hibernate.Session;
 
 import configuration.UtilDate;
 import dataAccess.HibernateUtil;
-import eredua.domeinua.Event;
-import eredua.domeinua.Question;
+import domain.Erabiltzailea;
+import domain.Event;
+import domain.Pertsona;
+import domain.Question;
 import exceptions.QuestionAlreadyExist;
 import nagusia.GalderakSortu;
 import nagusia.GertaerakSortu;
@@ -221,8 +223,7 @@ public class HibernateDataAccess implements DataAccessInterface {
 		 * lastDayMonthDate);
 		 */
 
-		Query q = session
-				.createQuery("SELECT DISTINCT ev.eventDate FROM Event ev WHERE ev.eventDate BETWEEN :1 and :2");
+		Query q = session.createQuery("SELECT DISTINCT ev.eventDate FROM Event ev WHERE ev.eventDate BETWEEN :1 and :2");
 		q.setParameter("1", firstDayMonthDate);
 		q.setParameter("2", lastDayMonthDate);
 
@@ -250,6 +251,95 @@ public class HibernateDataAccess implements DataAccessInterface {
 		return ev.DoesQuestionExists(question);
 
 	}
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+	// CUARENTENA
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	public boolean existitzenDa(String izena, String pasahitza) {
+		Pertsona e = (Pertsona)session.get(Pertsona.class, izena);
+		if (e == null)
+			return false;
+		else {
+			return e.pasahitzaZuzena(pasahitza);
+		}
+	}
+
+	public Pertsona getErabiltzailea(String izena) {
+		session.beginTransaction();
+		Pertsona pertsona = (Pertsona) session.get(Erabiltzailea.class, izena);
+		session.getTransaction().commit();
+		return pertsona;
+	}
+
+	public Erabiltzailea getErabiltzaileaIzenarekin(String izena) {
+		session.beginTransaction();
+		Erabiltzailea erabiltzailea = (Erabiltzailea) session.get(Erabiltzailea.class, izena);
+		session.getTransaction().commit();
+		return erabiltzailea;
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+	// CUARENTENA
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	public boolean adinaDu(Date jaiotzeData) {
+		Calendar gaur = Calendar.getInstance();
+		int urteDif = Math.abs(gaur.get(Calendar.YEAR) - jaiotzeData.getYear());
+		int hilbDif = gaur.get(Calendar.MONTH) - jaiotzeData.getMonth();
+
+		int hilabKop = (urteDif * 12) + (hilbDif > 0 ? hilbDif : 0);
+
+		int urteKop = hilabKop / 12;
+		System.out.println(urteKop);
+
+		return (urteKop >= 18);
+	}
+
+	public Pertsona erregistratu(String izena, String pasahitza, Date jaiotzeData) {
+		// Aztertu ea aurretik existitzen den erabiltzailea izen horrekin
+		Pertsona e = this.getErabiltzailea(izena);
+		if (e == null) {
+			// Erabiltzailerik ez da existitzen
+			// Aztertu ea adina >= 18 den
+			boolean adinaNahikoa = this.adinaDu(jaiotzeData);
+			if (adinaNahikoa) {
+				Pertsona er = this.sortuErabiltzailea(izena, pasahitza, jaiotzeData);
+				return er;
+			} else
+				return null;
+		} else
+			return null;
+	}
+
+	public Pertsona sortuErabiltzailea(String izena, String pasahitza, Date jaiotzeData) {
+		session.getTransaction().begin();
+		// TODO: Soilik Erabiltzaileak sortu daitezke.
+		Pertsona er = new Erabiltzailea(izena, pasahitza, jaiotzeData);
+		session.persist(er);
+		session.getTransaction().commit();
+		return er;
+	}
+	
+	
+	public List<Erabiltzailea> getErabiltzaileaGuztiak() {
+
+		session.beginTransaction();
+		Query q = session.createQuery("from Erbitlzailea");
+		List<Erabiltzailea> erabiltzaileak = q.list();
+		session.getTransaction().commit();
+		
+		return erabiltzaileak;
+	}
+
+	public List<Pertsona> getPertsonaGuztiak() {
+		session.beginTransaction();
+		Query q = session.createQuery("from Pertsona");
+		List<Pertsona> pertsonak = q.list();
+		session.getTransaction().commit();
+		
+		return pertsonak;
+		}
+
 
 
 

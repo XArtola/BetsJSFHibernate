@@ -7,8 +7,10 @@ import java.util.ResourceBundle;
 
 //import configuration.ConfigXML;
 import dataAccess.DataAccessInterface;
-import eredua.domeinua.Event;
-import eredua.domeinua.Question;
+import domain.Erabiltzailea;
+import domain.Event;
+import domain.Pertsona;
+import domain.Question;
 import exceptions.EventFinished;
 import exceptions.QuestionAlreadyExist;
 
@@ -115,6 +117,58 @@ public class BLFacadeImplementation  implements BLFacade {
 		dbManager.initializeDB();
 		dbManager.close();
 	}
+	 
+	 @Override
+		public Pertsona existitzenDa(String izena, String pasahitza) {
+			dbManager.open();
+			Pertsona e = dbManager.getErabiltzailea(izena);
+			dbManager.close();
+			if (e != null && e.getPasahitza().equals(pasahitza)) {
+				return e;
+			}
+			return null;
+		}
+
+		@Override
+		public Pertsona erregistratu(String izena, String pasahitza, Date jaiotzeData) {
+			dbManager.open();
+			Pertsona e = dbManager.erregistratu(izena, pasahitza, jaiotzeData);
+			dbManager.close();
+			return e;
+		}
+		
+		@Override
+		public Pertsona getPertsona(String izena) {
+			dbManager.open();
+			Pertsona p = dbManager.getErabiltzailea(izena);
+			dbManager.close();
+			return p;
+		}
+		
+		@Override
+		public Erabiltzailea getErabiltzailea(String izena) {
+			dbManager.open();
+			Erabiltzailea e = dbManager.getErabiltzaileaIzenarekin(izena);
+			dbManager.close();
+			return e;
+		}
+
+		@Override
+		public List<Erabiltzailea> getErabiltzaileaGuztiak() {
+			dbManager.open();
+			List<Erabiltzailea> er = dbManager.getErabiltzaileaGuztiak();
+			dbManager.close();
+			return er;
+		}
+
+		@Override
+		public List<Pertsona> getPertsonaGuztiak() {
+			dbManager.open();
+			List<Pertsona> er = dbManager.getPertsonaGuztiak();
+			dbManager.close();
+			return er;
+		}
+
 
 }
 

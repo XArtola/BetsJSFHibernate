@@ -6,7 +6,7 @@ import java.util.List;
 import org.hibernate.Session;
 
 import dataAccess.HibernateUtil;
-import eredua.domeinua.Pertsona;
+import domain.Pertsona;
 
 public class PertsonakSortu {
 

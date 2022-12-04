@@ -1,6 +1,12 @@
 package businessLogic;
 
 import java.util.Vector;
+
+import domain.Erabiltzailea;
+import domain.Event;
+import domain.Pertsona;
+import domain.Question;
+
 import java.util.Date;
 import java.util.List;
 
@@ -8,9 +14,6 @@ import java.util.List;
 
 import exceptions.EventFinished;
 import exceptions.QuestionAlreadyExist;
-
-import eredua.domeinua.Event;
-import eredua.domeinua.Question;
 
 /**
  * Interface that specifies the business logic.
@@ -52,6 +55,20 @@ public interface BLFacade  {
 	 * It is invoked only when the option "initialize" is declared in the tag dataBaseOpenMode of resources/config.xml file
 	 */	
 	 public void initializeBD();
+	 
+	 public Pertsona existitzenDa(String izena, String pasahitza);
+		
+	 public Pertsona erregistratu(String izena, String pasahitza, Date jaiotzeData);
+	 
+	 List<Erabiltzailea> getErabiltzaileaGuztiak();
+	 List<Pertsona> getPertsonaGuztiak();
+	 
+	 
+	 public Pertsona getPertsona(String izena);
+	 public Erabiltzailea getErabiltzailea(String izena);
+	
+
+
 
 	
 }

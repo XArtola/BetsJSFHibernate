@@ -1,11 +1,14 @@
 package dataAccess;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
-import eredua.domeinua.Event;
-import eredua.domeinua.Question;
+import domain.Erabiltzailea;
+import domain.Event;
+import domain.Pertsona;
+import domain.Question;
 import exceptions.QuestionAlreadyExist;
 
 public interface DataAccessInterface {
@@ -70,7 +73,24 @@ public interface DataAccessInterface {
 	 * @return true if the event contains this the questions, false in other case
 	 */
 	boolean existQuestion(Event event, String question);
+	
+	
+	boolean existitzenDa(String izena, String pasahitza);
 
+	Pertsona getErabiltzailea(String izena);
+
+	Erabiltzailea getErabiltzaileaIzenarekin(String izena);
+
+	boolean adinaDu(Date jaiotzeData);
+
+	Pertsona erregistratu(String izena, String pasahitza, Date jaiotzeData);
+
+	Pertsona sortuErabiltzailea(String izena, String pasahitza, Date jaiotzeData);
+	
+
+	public List<Erabiltzailea> getErabiltzaileaGuztiak();
+
+	public List<Pertsona> getPertsonaGuztiak();
 	
 
 }

@@ -1,4 +1,4 @@
-package eredua.domeinua;
+package domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;

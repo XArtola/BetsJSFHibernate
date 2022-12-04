@@ -7,8 +7,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import dataAccess.HibernateUtil;
-import eredua.domeinua.Event;
-import eredua.domeinua.Question;
+import domain.Event;
+import domain.Question;
 
 public class EventDataAccess {
 
