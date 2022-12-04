@@ -151,11 +151,12 @@ public class HibernateDataAccess implements DataAccessInterface {
 
 		session.beginTransaction();
 		
-		Event ev = (Event) session.get(Event.class, event.getEventDate());
+		Event ev = (Event) session.get(Event.class, event.getEventNumber());
 
 		if (ev.DoesQuestionExists(question)) {
 			session.getTransaction().rollback();
-			throw new QuestionAlreadyExist(ResourceBundle.getBundle("Etiquetas").getString("ErrorQueryAlreadyExist"));
+			//throw new QuestionAlreadyExist(ResourceBundle.getBundle("Etiquetas").getString("ErrorQueryAlreadyExist"));
+			 throw new QuestionAlreadyExist("Errorea: Galdera hori existitzen da");
 		}
 
 		Question q = ev.addQuestion(question, betMinimum);

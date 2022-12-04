@@ -49,15 +49,21 @@ public class BLFacadeImplementation  implements BLFacade {
 		dbManager.open();
 		Question qry=null;
 		
-	    System.out.println(event.getEventDate());
-		
+	/*    System.out.println(event.getEventDate());
+	    System.out.println( new Date().compareTo(event.getEventDate())>0);*/
+	   
 		
 		if(new Date().compareTo(event.getEventDate())>0)
 			throw new EventFinished(ResourceBundle.getBundle("Etiquetas").getString("ErrorEventHasFinished"));
 				
-		
+	    //System.out.println( "IF PASA SU");
+
 		 qry=dbManager.createQuestion(event,question,betMinimum);		
 
+		  //  System.out.println( "CREATE QUESTION PASA SU");
+
+		 
+		 
 		dbManager.close();
 		
 		return qry;
