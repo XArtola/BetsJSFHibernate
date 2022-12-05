@@ -59,16 +59,16 @@
 
 		</h:form>
 		<span class="row pt-5 pl-2 pr-2 d-flex justify-content-center ">
-			<h:messages class="h4 border border-danger text-white" id="mezuak"
-				style="color:blue; border-radius: 0.5em; background-color:#F08080" />
+		<!--  	<h:messages class="h4 border border-danger text-white" id="mezuak"
+				style="color:blue; border-radius: 0.5em; background-color:#F08080" /> -->
 				
-				<p:messages for="somekey" severity="error" />
-				<p:growl for="anotherkey" severity="error"/>
-				<p:messages for="somekey" severity="info" />
-				<p:growl for="anotherkey" severity="info"/>
-				<p:messages for="somekey" severity="danger" />
-				<p:growl for="anotherkey" severity="danger"/>
+				<p:messages for="somekey1" severity="info,warn,error" escape="true"/>
+				<p:growl for="anotherkey1" severity="info,warn,error" escape="true"/>
+				<p:messages for="somekey2" severity="info,warn,error" escape="true"/>
+				<p:growl for="anotherkey2" severity="info,warn,error" escape="true"/>
 
+				<p:messages for="somekey" severity="error" escape="true"/>
+				<p:growl for="anotherkey" severity="error" escape="true"/>
 				
 				
 				

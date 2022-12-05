@@ -145,16 +145,15 @@ public class BetsBean {
 
 
 		if (gertaera == null) {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Errorea: Gertaera bat aukeratu behar da"));
+		//	FacesContext.getCurrentInstance().addMessage(null,
+					//new FacesMessage("Errorea: Gertaera bat aukeratu behar da"));
 			
 			
 			FacesContext context = FacesContext.getCurrentInstance();
-			context.addMessage("somekey", new FacesMessage("Errorea: Gertaera bat aukeratu behar da"));
-		/*	context.addMessage("somekey", facesMessage2);
-			context.addMessage("anotherkey", facesMessage3);*/
-			context.addMessage("anotherkey", new FacesMessage("Errorea: Gertaera bat aukeratu behar da"));
-
+			//context.addMessage("somekey1", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Connection failed.", "Erorrea"));
+			context.addMessage("anotherkey2", new FacesMessage(FacesMessage.SEVERITY_WARN, "Connection failed.", "Erorrea"));
+			context.addMessage("anotherkey1", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Connection failed.", "Erorrea"));
+	
 		}
 
 		else {
