@@ -2,16 +2,19 @@
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf16686844837090" configfile="/BetsJSFHibernate/src/main/webapp/WEB-INF/faces-config.xml">
   <nodes xsi:type="pageflow:PFPage" name="CreateQuestion.xhtml" x="741" y="348" id="pf16686847975981" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf16686847975982" inlinks="pf16686847975983" path="/CreateQuestion.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="FindQuestions.xhtml" x="744" y="204" id="pf16686847975984" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf16686847975985" inlinks="pf16686847975986" path="/FindQuestions.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="main.xhtml" x="552" y="269" id="pf16686847975987" referenceLink="//@navigationRule.6/@navigationCase.0/@toViewId|" outlinks="pf16686847975986 pf16686847975983" inlinks="pf16686847975982 pf16686847975985 pf16701788532310" path="/main.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="landingPage.xhtml" x="96" y="288" id="pf16701788532311" referenceLink="//@navigationRule.7/@navigationCase.0/@toViewId|" outlinks="pf16701788532312 pf16701788532313" inlinks="pf16701788532314" path="/landingPage.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" x="372" y="180" id="pf16701788532315" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf16701788532310" inlinks="pf16701788532312" path="/login.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="register.xhtml" x="364" y="372" id="pf16701788532316" referenceLink="//@navigationRule.7/@fromViewId|" outlinks="pf16701788532314" inlinks="pf16701788532313" path="/register.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="main.xhtml" x="552" y="269" id="pf16686847975987" referenceLink="//@navigationRule.8/@navigationCase.0/@toViewId|" outlinks="pf16686847975986 pf16686847975983" inlinks="pf16686847975982 pf16686847975985 pf16702408240290" path="/main.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="Register.xhtml" x="353" y="339" id="pf16702408240291" referenceLink="//@navigationRule.5/@fromViewId|" outlinks="pf16702408240292" inlinks="pf16702408240293" path="/Register.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="LandingPage.xhtml" x="108" y="250" id="pf16702408240294" referenceLink="//@navigationRule.7/@navigationCase.0/@toViewId|" outlinks="pf16702408240293 pf16702408240295" inlinks="pf16702408240292 pf16702408240296" path="/LandingPage.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="Login.xhtml" x="353" y="156" id="pf16702408240297" referenceLink="//@navigationRule.9/@navigationCase.0/@toViewId|" outlinks="pf16702408240296 pf16702408240290" inlinks="pf16702408240295 pf16702452675838" path="/Login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="WEB-INF/facelets/templates/TxantiloiaLogin.xhtml" x="48" y="12" id="pf16702452675839" referenceLink="//@navigationRule.9/@fromViewId|" outlinks="pf16702452675838" path="/WEB-INF/facelets/templates/TxantiloiaLogin.xhtml"/>
   <links id="pf16686847975986" target="pf16686847975984" source="pf16686847975987" outcome="find"/>
   <links id="pf16686847975983" target="pf16686847975981" source="pf16686847975987" outcome="create"/>
   <links id="pf16686847975982" target="pf16686847975987" source="pf16686847975981" outcome="atzera"/>
   <links id="pf16686847975985" target="pf16686847975987" source="pf16686847975984" outcome="atzera"/>
-  <links id="pf16701788532312" target="pf16701788532315" source="pf16701788532311" outcome="login"/>
-  <links id="pf16701788532313" target="pf16701788532316" source="pf16701788532311" outcome="register"/>
-  <links id="pf16701788532310" target="pf16686847975987" source="pf16701788532315" outcome="aurrera"/>
-  <links id="pf16701788532314" target="pf16701788532311" source="pf16701788532316" outcome="atzera"/>
+  <links id="pf16702408240293" target="pf16702408240291" source="pf16702408240294" outcome="register"/>
+  <links id="pf16702408240292" target="pf16702408240294" source="pf16702408240291" outcome="atzera"/>
+  <links id="pf16702408240295" target="pf16702408240297" source="pf16702408240294" outcome="login"/>
+  <links id="pf16702408240296" target="pf16702408240294" source="pf16702408240297" outcome="atzera"/>
+  <links id="pf16702408240290" target="pf16686847975987" source="pf16702408240297" outcome="aurrera"/>
+  <links id="pf16702452675838" target="pf16702408240297" source="pf16702452675839" outcome="login"/>
 </pageflow:Pageflow>

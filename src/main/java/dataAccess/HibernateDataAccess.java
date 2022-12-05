@@ -311,8 +311,10 @@ public class HibernateDataAccess implements DataAccessInterface {
 			// Aztertu ea adina >= 18 den
 			boolean adinaNahikoa = this.adinaDu(jaiotzeData);
 			if (adinaNahikoa) {
+				
 				Pertsona er = this.sortuErabiltzailea(izena, pasahitza, jaiotzeData);
 				return er;
+				
 			} else
 				return null;
 		} else
@@ -320,6 +322,7 @@ public class HibernateDataAccess implements DataAccessInterface {
 	}
 
 	public Pertsona sortuErabiltzailea(String izena, String pasahitza, Date jaiotzeData) {
+		this.open(); //wtf
 		session.beginTransaction();
 		// TODO: Soilik Erabiltzaileak sortu daitezke.
 		Pertsona er = new Erabiltzailea(izena, pasahitza, jaiotzeData);

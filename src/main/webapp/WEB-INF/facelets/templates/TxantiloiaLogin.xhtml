@@ -7,9 +7,9 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>BetsJSF aplikazioa</title>
-	<h:outputStylesheet library="css" name="bootstrap.css" />
+	<title><ui:insert name="izenburua"></ui:insert></title>
 	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="bootstrap.css" />
 
 	<!-- JavaScript Bundle with Popper -->
 	<script
@@ -17,17 +17,24 @@
 		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 		crossorigin="anonymous"></script>
 </h:head>
-<h:body style="background-color: rgb(232, 227, 226)">
+<!--  <h:body style="background-color: rgb(232, 227, 226)" class="vh-100">-->
+<h:body style="background-image: url('Bundesliga-scaled-1.jpg');" class="vh-100">
+	<h:form class="vh-100 vw-100 p-5">
+		<p:clock pattern="HH:mm:ss" />
+		<!-- <div class="vh-50 vw-50 m-auto">  -->
 
-	<h:form>
+		<div class="container h-50 w-25 border shadow mt-5 mb-5"
+			style="background-color: white">
 
-		<h:commandButton value="Login" action="#{login.login}" />
-		<h:commandButton value="Register" action="#{login.register}" />
+			<div class="row h-100 w-100">
 
+
+				<ui:insert name="gorputza">
+				</ui:insert>
+			</div>
+		</div>
+		<!-- </div> -->
 	</h:form>
-
-
-
 </h:body>
 
 </html>

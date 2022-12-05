@@ -45,35 +45,51 @@
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
-  <display-name>landingPage.xhtml</display-name>
-  <from-view-id>/landingPage.xhtml</from-view-id>
-  <navigation-case>
-   <from-outcome>login</from-outcome>
-   <to-view-id>/login.xhtml</to-view-id>
-  </navigation-case>
+ 	<display-name>LandingPage.xhtml</display-name>
+ 	<from-view-id>/LandingPage.xhtml</from-view-id>
+ 	<navigation-case>
+ 		<from-outcome>register</from-outcome>
+ 		<to-view-id>/Register.xhtml</to-view-id>
+ 	</navigation-case>
  </navigation-rule>
  <navigation-rule>
-  <display-name>landingPage.xhtml</display-name>
-  <from-view-id>/landingPage.xhtml</from-view-id>
-  <navigation-case>
-   <from-outcome>register</from-outcome>
-   <to-view-id>/register.xhtml</to-view-id>
-  </navigation-case>
+ 	<display-name>Register.xhtml</display-name>
+ 	<from-view-id>/Register.xhtml</from-view-id>
+ 	<navigation-case>
+ 		<from-outcome>atzera</from-outcome>
+ 		<to-view-id>/LandingPage.xhtml</to-view-id>
+ 	</navigation-case>
  </navigation-rule>
  <navigation-rule>
-  <display-name>login.xhtml</display-name>
-  <from-view-id>/login.xhtml</from-view-id>
-  <navigation-case>
-  	<from-outcome>aurrera</from-outcome>
-   <to-view-id>/main.xhtml</to-view-id>
-  </navigation-case>
+ 	<display-name>LandingPage.xhtml</display-name>
+ 	<from-view-id>/LandingPage.xhtml</from-view-id>
+ 	<navigation-case>
+ 		<from-outcome>login</from-outcome>
+ 		<to-view-id>/Login.xhtml</to-view-id>
+ 	</navigation-case>
  </navigation-rule>
  <navigation-rule>
-  <display-name>register.xhtml</display-name>
-  <from-view-id>/register.xhtml</from-view-id>
-  <navigation-case>
-   <from-outcome>atzera</from-outcome>
-   <to-view-id>/landingPage.xhtml</to-view-id>
-  </navigation-case>
+ 	<display-name>Login.xhtml</display-name>
+ 	<from-view-id>/Login.xhtml</from-view-id>
+ 	<navigation-case>
+ 		<from-outcome>atzera</from-outcome>
+ 		<to-view-id>/LandingPage.xhtml</to-view-id>
+ 	</navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+ 	<display-name>Login.xhtml</display-name>
+ 	<from-view-id>/Login.xhtml</from-view-id>
+ 	<navigation-case>
+ 		<from-outcome>aurrera</from-outcome>
+ 		<to-view-id>/main.xhtml</to-view-id>
+ 	</navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+ 	<display-name>WEB-INF/facelets/templates/TxantiloiaLogin.xhtml</display-name>
+ 	<from-view-id>/WEB-INF/facelets/templates/TxantiloiaLogin.xhtml</from-view-id>
+ 	<navigation-case>
+ 		<from-outcome>login</from-outcome>
+ 		<to-view-id>/Login.xhtml</to-view-id>
+ 	</navigation-case>
  </navigation-rule>
 </faces-config>
