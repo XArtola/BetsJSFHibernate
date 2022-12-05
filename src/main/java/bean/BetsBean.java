@@ -114,6 +114,9 @@ public class BetsBean {
 
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Data aukeratua: " + event.getObject()));
 		gertaerak = facadeBL.getEvents((Date) event.getObject());
+		
+		
+		
 
 	}
 
@@ -140,14 +143,22 @@ public class BetsBean {
 
 	public void gordeGaldera() {
 
-		 System.out.println(gertaera.toString()+" "+question+ " "+ minBet );
 
 		if (gertaera == null) {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Errorea: Gertaera bat aukeratu behar da"));
+			
+			
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.addMessage("somekey", new FacesMessage("Errorea: Gertaera bat aukeratu behar da"));
+		/*	context.addMessage("somekey", facesMessage2);
+			context.addMessage("anotherkey", facesMessage3);*/
+			context.addMessage("anotherkey", new FacesMessage("Errorea: Gertaera bat aukeratu behar da"));
+
 		}
 
 		else {
+			// System.out.println(gertaera.toString()+" "+question+ " "+ minBet );
 
 			try {
 				facadeBL.createQuestion(gertaera, this.question, this.minBet);

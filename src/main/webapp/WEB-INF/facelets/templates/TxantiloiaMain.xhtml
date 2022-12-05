@@ -7,7 +7,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>BetsJSF aplikazioa</title>
+	<title><ui:insert name="izenburua"></ui:insert></title>
 	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
 	<h:outputStylesheet library="css" name="bootstrap.css" />
 
@@ -17,33 +17,32 @@
 		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 		crossorigin="anonymous"></script>
 </h:head>
-<h:body style="background-color: rgb(232, 227, 226)">
-	<h:form>
+<!--  <h:body style="background-color: rgb(232, 227, 226)" class="vh-100">-->
+<!-- <h:body style="background-image: url(#{request.contextPath}/resources/img/fondo5.jpg); background-size: cover;" class="vh-100"> -->
+<h:body style="background-color: rgb(232, 227, 226)"
+	class="vh-100 vw-100">
+
+	<div class="container p-5">
 		<p:clock pattern="HH:mm:ss" />
-		<div class="vh-95">
 
-			<div
-				class="container mt-5 h-55 w-25 px-auto border shadow rounded pb-5"
-				style="background-color: white">
-				<h1 class="text-center pt-5 pb-5">BetsJSF</h1>
+		<div class="row h-100 w-100">
 
-				<div class="row align-middle justify-content-center pt-5">
-					<div class="col-12 d-flex justify-content-center mt-5 mb-2">
-						<h:commandButton class="text-center p-auto btn btn-primary"
-							value="Query Question" action="#{bets.find}" />
-					</div>
+			<div class="col-9 p-3 bg-white border shadow">
+				<ui:insert name="gorputza">
+				</ui:insert>
 
-
-					<div class="col-12 d-flex justify-content-center mt-3 mb-3">
-						<h:commandButton class="center btn btn-primary"
-							value="Create Question" action="#{bets.create}" />
-
-					</div>
-
-				</div>
 			</div>
+
+			<div class="col-3">
+				<ui:include src="Menua.xhtml" />
+
+
+			</div>
+
 		</div>
-	</h:form>
+
+	</div>
+
 </h:body>
 
 </html>

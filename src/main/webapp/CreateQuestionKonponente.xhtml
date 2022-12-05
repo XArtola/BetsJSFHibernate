@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition>
+	<f:view>
+
+	<h:form id="form" class="row">
+			<div class="col-md-6 col-sm-12 d-flex justify-content-center pt-5">
+				<p:calendar id="data" value="#{bets.data}" navigator="false"
+					mode="inline">
+					<p:ajax event="dateSelect" listener="#{bets.onDateSelect}"
+						update=":form:taulaEvent"></p:ajax>
+				</p:calendar>
+				<!-- 	<h:messages id="mezuak" style="color:blue" />  -->
+			</div>
+
+
+			<div class="col-md-6 col-sm-12 pt-5">
+				<p:dataTable id="taulaEvent" value="#{bets.gertaerak}" var="item"
+					selectionMode="single" selection="#{bets.gertaera}" border="1"
+					rowKey="#{item.eventNumber}">
+					<p:ajax event="rowSelect" listener="#{bets.onEventSelect}"></p:ajax>
+					<f:facet name="header">Events </f:facet>
+					<p:column headerText="Kodea">#{item.eventNumber}</p:column>
+					<p:column headerText="Mota">#{item.description}</p:column>
+				</p:dataTable>
+			</div>
+
+
+			<!-- 	<div class="col-md-6 col-sm-12">
+				<h:selectOneMenu id="zerrenda" value="#{bets.gertaera}">
+					<f:selectItems value="#{bets.gertaerak}"/>
+				</h:selectOneMenu>
+			</div>  -->
+
+
+		</h:form>
+		<h:form class="row ml-auto mr-auto pt-5">
+
+			<span class="pt-2 pb-2 col-12 d-flex justify-content-center">
+				<label for="Question">Question:</label> <h:inputText id="Question"
+					class="mx-2" value="#{bets.question}"></h:inputText>
+			</span>
+
+			<span class="pt-2 pb-2 col-12 d-flex justify-content-center">
+				<label for="Min_bet"> Min bet:</label> <h:inputText id="Min_bet"
+					class="mx-2" value="#{bets.minBet}"></h:inputText>
+			</span>
+
+			<span class="pt-2 pb-2 col-12 d-flex justify-content-center">
+				<h:commandButton class="btn btn-primary" value="Gorde galdera"
+					action="#{bets.gordeGaldera}" />
+			</span>
+
+
+		</h:form>
+		<span class="row pt-5 pl-2 pr-2 d-flex justify-content-center ">
+			<h:messages class="h4 border border-danger text-white" id="mezuak"
+				style="color:blue; border-radius: 0.5em; background-color:#F08080" />
+				
+				<p:messages for="somekey" severity="error" />
+				<p:growl for="anotherkey" severity="error"/>
+				<p:messages for="somekey" severity="info" />
+				<p:growl for="anotherkey" severity="info"/>
+				<p:messages for="somekey" severity="danger" />
+				<p:growl for="anotherkey" severity="danger"/>
+
+				
+				
+				
+		</span>
+		<h:form class="row pt-5">
+
+			<span class="pt-2 pb-4 col-12 d-flex justify-content-center">
+
+				<h:commandButton class="btn btn-primary" value="Back"
+					action="#{bets.atzera}" />
+			</span>
+		</h:form>
+
+
+
+
+	</f:view>
+</ui:composition>
+</html>
+
+
+

@@ -3,17 +3,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <ui:composition>
 	<f:view>
-
-		<span class="col-12"> <label for="UserName">Erabiltzaile
-				izena</label> <h:inputText id="UserName" value="#{login.izena}"></h:inputText>
+		<span class="col-12"><h1 class="h1 text-center py-2">Hasi saioa</h1></span>
+		<span class="col-12"></span>
+		<span class="col-12"> <label class="col-12 mb-2" for="UserName">Erabiltzaile
+				izena</label> <h:inputText class="col-12" id="UserName" value="#{login.izena}"></h:inputText>
 		</span>
-		<span class="col-12"> <label for="Pasahitza">Pasahitza</label>
-			<h:inputText id="Pasahitza" value="#{login.pasahitza}"></h:inputText>
+		<span class="col-12"> <label  class="col-12 mb-2" for="Pasahitza">Pasahitza</label>
+			<h:inputSecret class="col-12" id="Pasahitza" value="#{login.pasahitza}"></h:inputSecret>
 		</span>
-		<span class="col-12"> <h:commandButton class="btn btn-primary"
+		<span class="col-12"> <h:commandButton class="btn btn-primary btn-lg"
 				value="Hasi saioa" action="#{login.loginEgin}" />
 		</span>
 

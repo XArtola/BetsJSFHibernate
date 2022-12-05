@@ -1,0 +1,30 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition>
+	<f:view>
+
+		<h:form>
+			<p:menu>
+				<p:submenu label="#{login.izena}">
+					<p:menuitem value="Informazioa" action="#{bets.atzera}" />
+					<p:menuitem value="Amaitu saioa" action="#{bets.find}" />
+				</p:submenu>
+				<p:submenu label="Aukerak">
+					<p:menuitem value="Ikusi galderak" action="#{bets.find}" />
+					<p:menuitem value="Sortu galdera" action="#{bets.create}" />
+				</p:submenu>
+			</p:menu>
+		</h:form>
+
+
+	</f:view>
+</ui:composition>
+</html>
+

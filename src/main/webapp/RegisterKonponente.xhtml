@@ -3,24 +3,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <ui:composition>
 	<f:view>
-		<label for="UserName">Erabiltzaile izena</label>
-		<h:inputText id="UserName" value="#{login.izena}"></h:inputText>
-		<label for="Pasahitza">Pssahitza</label>
-		<h:inputText id="Pasahitza" value="#{login.pasahitza}"></h:inputText>
 
+		<span class="col-12"><h1 class="h1 text-center">Hasi saioa</h1></span>
+		<span class="col-12"> <label class="col-12 mb-2" for="UserName">Erabiltzaile
+				izena: </label> <h:inputText class="col-12" id="UserName"
+				value="#{login.izena}"></h:inputText>
+		</span>
+		<span class="col-12"> <label class="col-12 mb-2"
+			for="Pasahitza">Pasahitza: </label> <p:password
+				value="#{login.pasahitza}" inline="true" feedback="true" />
+			
+		</span>
 
-		<label for="JaiotzeData">Jaoitze data</label>
-		<p:calendar id="data" value="#{login.jaiotzeData}" navigator="true"
-			mode="popup">
-			<p:ajax event="dateSelect" listener="#{login.onDateSelect}"></p:ajax>
+		<span class="col-12"> <label class="col-12 mb-2"
+			for="JaiotzeData">Jaiotze data: </label> <p:calendar id="data"
+				value="#{login.jaiotzeData}" navigator="true" mode="popup">
+				<p:ajax event="dateSelect" listener="#{login.onDateSelect}"></p:ajax>
 
-		</p:calendar>
+			</p:calendar>
+		</span>
+		<span class="col-12"> <h:commandButton class="btn btn-primary btn-lg"
+				value="Erregistratu" action="#{login.erregistratu}" />
 
-		<h:commandButton class="btn btn-primary" value="Erregistratu"
-			action="#{login.erregistratu}" />
+		</span>
 	</f:view>
 </ui:composition>
 </html>
