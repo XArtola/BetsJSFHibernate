@@ -13,123 +13,142 @@
   <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <navigation-rule>
- 	<display-name>LandingPage.xhtml</display-name>
- 	<from-view-id>/LandingPage.xhtml</from-view-id>
- 	<navigation-case>
- 		<from-outcome>register</from-outcome>
- 		<to-view-id>/Register.xhtml</to-view-id>
- 	</navigation-case>
+  <display-name>LandingPage.xhtml</display-name>
+  <from-view-id>/LandingPage.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>register</from-outcome>
+   <to-view-id>/Register.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
- 	<display-name>Register.xhtml</display-name>
- 	<from-view-id>/Register.xhtml</from-view-id>
- 	<navigation-case>
- 		<from-outcome>atzera</from-outcome>
- 		<to-view-id>/LandingPage.xhtml</to-view-id>
- 	</navigation-case>
+  <display-name>Register.xhtml</display-name>
+  <from-view-id>/Register.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>atzera</from-outcome>
+   <to-view-id>/LandingPage.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
- 	<display-name>LandingPage.xhtml</display-name>
- 	<from-view-id>/LandingPage.xhtml</from-view-id>
- 	<navigation-case>
- 		<from-outcome>login</from-outcome>
- 		<to-view-id>/Login.xhtml</to-view-id>
- 	</navigation-case>
+  <display-name>LandingPage.xhtml</display-name>
+  <from-view-id>/LandingPage.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>login</from-outcome>
+   <to-view-id>/Login.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
- 	<display-name>Login.xhtml</display-name>
- 	<from-view-id>/Login.xhtml</from-view-id>
- 	<navigation-case>
- 		<from-outcome>atzera</from-outcome>
- 		<to-view-id>/LandingPage.xhtml</to-view-id>
- 	</navigation-case>
+  <display-name>Login.xhtml</display-name>
+  <from-view-id>/Login.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>atzera</from-outcome>
+   <to-view-id>/LandingPage.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
- 	<display-name>Login.xhtml</display-name>
- 	<from-view-id>/Login.xhtml</from-view-id>
- 	<navigation-case>
- 		<from-outcome>aurrera</from-outcome>
- 		<to-view-id>/Main.xhtml</to-view-id>
- 	</navigation-case>
+  <display-name>Login.xhtml</display-name>
+  <from-view-id>/Login.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>aurrera</from-outcome>
+   <to-view-id>/Main.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
- 	<display-name>Main.xhtml</display-name>
- 	<from-view-id>/Main.xhtml</from-view-id>
- 	<navigation-case>
- 		<from-outcome>find</from-outcome>
- 		<to-view-id>/FindQuestions.xhtml</to-view-id>
- 	</navigation-case>
+  <display-name>Main.xhtml</display-name>
+  <from-view-id>/Main.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>find</from-outcome>
+   <to-view-id>/FindQuestions.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
- 	<display-name>Main.xhtml</display-name>
- 	<from-view-id>/Main.xhtml</from-view-id>
- 	<navigation-case>
- 		<from-outcome>create</from-outcome>
- 		<to-view-id>/CreateQuestion.xhtml</to-view-id>
- 	</navigation-case>
+  <display-name>Main.xhtml</display-name>
+  <from-view-id>/Main.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>create</from-outcome>
+   <to-view-id>/CreateQuestion.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
- 	<display-name>FindQuestions.xhtml</display-name>
- 	<from-view-id>/FindQuestions.xhtml</from-view-id>
- 	<navigation-case>
- 		<from-outcome>atzera</from-outcome>
- 		<to-view-id>/Main.xhtml</to-view-id>
- 	</navigation-case>
+  <display-name>FindQuestions.xhtml</display-name>
+  <from-view-id>/FindQuestions.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>atzera</from-outcome>
+   <to-view-id>/Main.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
- 	<display-name>CreateQuestion.xhtml</display-name>
- 	<from-view-id>/CreateQuestion.xhtml</from-view-id>
- 	<navigation-case>
- 		<from-outcome>atzera</from-outcome>
- 		<to-view-id>/Main.xhtml</to-view-id>
- 	</navigation-case>
+  <display-name>CreateQuestion.xhtml</display-name>
+  <from-view-id>/CreateQuestion.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>atzera</from-outcome>
+   <to-view-id>/Main.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
- 	<display-name>Main.xhtml</display-name>
- 	<from-view-id>/Main.xhtml</from-view-id>
- 	<navigation-case>
- 		<from-outcome>logOut</from-outcome>
- 		<to-view-id>/LandingPage.xhtml</to-view-id>
- 	</navigation-case>
+  <display-name>Main.xhtml</display-name>
+  <from-view-id>/Main.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>logOut</from-outcome>
+   <to-view-id>/LandingPage.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
- 	<display-name>CreateQuestion.xhtml</display-name>
- 	<from-view-id>/CreateQuestion.xhtml</from-view-id>
- 	<navigation-case>
- 		<from-outcome>logOut</from-outcome>
- 		<to-view-id>/LandingPage.xhtml</to-view-id>
- 	</navigation-case>
+  <display-name>CreateQuestion.xhtml</display-name>
+  <from-view-id>/CreateQuestion.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>logOut</from-outcome>
+   <to-view-id>/LandingPage.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
- 	<display-name>FindQuestions.xhtml</display-name>
- 	<from-view-id>/FindQuestions.xhtml</from-view-id>
- 	<navigation-case>
- 		<from-outcome>logOut</from-outcome>
- 		<to-view-id>/LandingPage.xhtml</to-view-id>
- 	</navigation-case>
+  <display-name>FindQuestions.xhtml</display-name>
+  <from-view-id>/FindQuestions.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>logOut</from-outcome>
+   <to-view-id>/LandingPage.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
- 	<display-name>FindQuestions.xhtml</display-name>
- 	<from-view-id>/FindQuestions.xhtml</from-view-id>
- 	<navigation-case>
- 		<from-outcome>create</from-outcome>
- 		<to-view-id>/CreateQuestion.xhtml</to-view-id>
- 	</navigation-case>
+  <display-name>FindQuestions.xhtml</display-name>
+  <from-view-id>/FindQuestions.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>create</from-outcome>
+   <to-view-id>/CreateQuestion.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
- 	<display-name>CreateQuestion.xhtml</display-name>
- 	<from-view-id>/CreateQuestion.xhtml</from-view-id>
- 	<navigation-case>
- 		<from-outcome>find</from-outcome>
- 		<to-view-id>/FindQuestions.xhtml</to-view-id>
- 	</navigation-case>
+  <display-name>CreateQuestion.xhtml</display-name>
+  <from-view-id>/CreateQuestion.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>find</from-outcome>
+   <to-view-id>/FindQuestions.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
- 	<display-name>Main.xhtml</display-name>
- 	<from-view-id>/Main.xhtml</from-view-id>
- 	<navigation-case>
- 		<from-outcome>atzera</from-outcome>
- 		<to-view-id>/Main.xhtml</to-view-id>
- 	</navigation-case>
+  <display-name>Main.xhtml</display-name>
+  <from-view-id>/Main.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>atzera</from-outcome>
+   <to-view-id>/Main.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <display-name>LandingPage.xhtml</display-name>
+  <from-view-id>/LandingPage.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>aurrera</from-outcome>
+   <to-view-id>/Main.xhtml</to-view-id>
+   <redirect/>
+  </navigation-case>
  </navigation-rule>
 </faces-config>

@@ -1,6 +1,27 @@
 @charset "UTF-8";
- /*Nik sortuttako klaseak */
-  body {
-  
-  background-color: rgb(0, 255, 255) !important;
+/*Nik sortuttako klaseak */
+body {
+	background-color: #615b5b !important;
+}
+
+/*.ui-panelgrid>*>tr,
+.ui-panelgrid .ui-panelgrid-cell {
+    border: none;
+}
+
+.ui-widget-content{
+	
+	border: none;
+	
+}*/
+
+/*.ui-layout-unit .ui-layout-unit-content {
+	background:transparent;
+}*/
+
+/*ui-top, .ui-top .ui-layout, .ui-top .ui-layout-bd, .ui-top .ui-layout-unit {
+    background-image: none;
+    background-color: #87B6D9; }*/
+.ui-widget-content {
+	background-color: transparent;
 }

@@ -1,5 +1,8 @@
 package configuration;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
@@ -56,6 +59,16 @@ public class UtilDate {
 		calendar.set(Calendar.HOUR_OF_DAY, 0);
 		return calendar.getTime();
 
+	}
+	
+	public static int calculateAdina(Date jaiotzeData) {
+		
+		LocalDate localTime = LocalDate.now();
+		LocalDate jaiotzeDataLT = jaiotzeData.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		long adina = ChronoUnit.YEARS.between(localTime,jaiotzeDataLT);
+	
+		return (int) Math.abs(adina);
+		
 	}
 	
 }

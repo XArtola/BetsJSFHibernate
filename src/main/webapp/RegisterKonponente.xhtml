@@ -7,16 +7,17 @@
 	xmlns:p="http://primefaces.org/ui">
 <ui:composition>
 	<f:view>
-
-		<span class="col-12"><h1 class="h1 text-center">Hasi saioa</h1></span>
+		<p:focus />
+		<span class="col-12"><h1 class="h1 text-center">Erregistratu</h1></span>
 		<span class="col-12"> <label class="col-12 mb-2" for="UserName">Erabiltzaile
 				izena: </label> <h:inputText class="col-12" id="UserName"
-				value="#{login.izena}"></h:inputText>
+				value="#{login.izena}"></h:inputText> <p:tooltip for="UserName"
+				value="Hau izango da aplikazioan izango duzun erabiltzaile izena" />
 		</span>
 		<span class="col-12"> <label class="col-12 mb-2"
 			for="Pasahitza">Pasahitza: </label> <p:password
 				value="#{login.pasahitza}" inline="true" feedback="true" />
-			
+
 		</span>
 
 		<span class="col-12"> <label class="col-12 mb-2"
@@ -26,10 +27,16 @@
 
 			</p:calendar>
 		</span>
-		<span class="col-12"> <h:commandButton class="btn btn-primary btn-lg"
-				value="Erregistratu" action="#{login.erregistratu}" />
+		<span class="col-12"> <h:commandButton
+				class="btn btn-primary btn-lg" value="Erregistratu"
+				action="#{login.erregistratu}" />
 
 		</span>
+
+
+		<span class="col-12"><p:messages for="registerMezua"
+				severity="info,warn,error" escape="true" /> </span>
+
 	</f:view>
 </ui:composition>
 </html>

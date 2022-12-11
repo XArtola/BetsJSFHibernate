@@ -1,5 +1,8 @@
 package dataAccess;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -18,6 +21,8 @@ import domain.Erabiltzailea;
 import domain.Event;
 import domain.Pertsona;
 import domain.Question;
+import exceptions.AdinTxikikoa;
+import exceptions.ErabiltzaileaExistizenDa;
 import exceptions.QuestionAlreadyExist;
 import nagusia.GalderakSortu;
 import nagusia.GertaerakSortu;
@@ -110,12 +115,10 @@ public class HibernateDataAccess implements DataAccessInterface {
 			q5 = ev17.addQuestion("Zeinek irabaziko du partidua?", 1);
 			q6 = ev17.addQuestion("Golak sartuko dira lehenengo zatian?", 2);
 
-	/*		session.persist(q1);
-			session.persist(q2);
-			session.persist(q3);
-			session.persist(q4);
-			session.persist(q5);
-			session.persist(q6);*/
+			/*
+			 * session.persist(q1); session.persist(q2); session.persist(q3);
+			 * session.persist(q4); session.persist(q5); session.persist(q6);
+			 */
 
 			session.persist(ev1);
 			session.persist(ev2);
@@ -137,12 +140,9 @@ public class HibernateDataAccess implements DataAccessInterface {
 			session.persist(ev18);
 			session.persist(ev19);
 			session.persist(ev20);
-			
-			
+
 			Erabiltzailea er1 = new Erabiltzailea("user", "pass", new Date());
 			session.persist(er1);
-			
-			
 
 			session.getTransaction().commit();
 			System.out.println("Db initialized");
@@ -150,7 +150,7 @@ public class HibernateDataAccess implements DataAccessInterface {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public Question createQuestion(Event event, String question, float betMinimum) throws QuestionAlreadyExist {
 
@@ -158,13 +158,14 @@ public class HibernateDataAccess implements DataAccessInterface {
 				+ betMinimum);
 
 		session.beginTransaction();
-		
+
 		Event ev = (Event) session.get(Event.class, event.getEventNumber());
 
 		if (ev.DoesQuestionExists(question)) {
 			session.getTransaction().rollback();
-			//throw new QuestionAlreadyExist(ResourceBundle.getBundle("Etiquetas").getString("ErrorQueryAlreadyExist"));
-			 throw new QuestionAlreadyExist("Errorea: Galdera hori existitzen da");
+			// throw new
+			// QuestionAlreadyExist(ResourceBundle.getBundle("Etiquetas").getString("ErrorQueryAlreadyExist"));
+			throw new QuestionAlreadyExist("Errorea: Galdera hori existitzen da");
 		}
 
 		Question q = ev.addQuestion(question, betMinimum);
@@ -176,8 +177,7 @@ public class HibernateDataAccess implements DataAccessInterface {
 		return q;
 
 	}
-	
-	
+
 	@Override
 	public List<Event> getEvents(Date date) {
 
@@ -187,7 +187,7 @@ public class HibernateDataAccess implements DataAccessInterface {
 		Query q = session.createQuery("from Event where eventDate= :date");
 		q.setParameter("date", date);
 		List<Event> events = q.list();
-		
+
 		for (Event ev : events) {
 			System.out.println(ev.toString());
 			// res.add(ev);
@@ -210,11 +210,9 @@ public class HibernateDataAccess implements DataAccessInterface {
 
 	}
 
-
-
 	@Override
 	public List<Date> getEventsMonth(Date date) {
-		
+
 		session.beginTransaction();
 		System.out.println(">> DataAccess: getEventsMonth");
 		// Vector<Date> res = new Vector<Date>();
@@ -229,7 +227,8 @@ public class HibernateDataAccess implements DataAccessInterface {
 		 * lastDayMonthDate);
 		 */
 
-		Query q = session.createQuery("SELECT DISTINCT ev.eventDate FROM Event ev WHERE ev.eventDate BETWEEN :1 and :2");
+		Query q = session
+				.createQuery("SELECT DISTINCT ev.eventDate FROM Event ev WHERE ev.eventDate BETWEEN :1 and :2");
 		q.setParameter("1", firstDayMonthDate);
 		q.setParameter("2", lastDayMonthDate);
 
@@ -263,7 +262,7 @@ public class HibernateDataAccess implements DataAccessInterface {
 
 	public boolean existitzenDa(String izena, String pasahitza) {
 		session.beginTransaction();
-		Pertsona e = (Pertsona)session.get(Pertsona.class, izena);
+		Pertsona e = (Pertsona) session.get(Pertsona.class, izena);
 		session.getTransaction().commit();
 		if (e == null)
 			return false;
@@ -291,19 +290,14 @@ public class HibernateDataAccess implements DataAccessInterface {
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public boolean adinaDu(Date jaiotzeData) {
-		Calendar gaur = Calendar.getInstance();
-		int urteDif = Math.abs(gaur.get(Calendar.YEAR) - jaiotzeData.getYear());
-		int hilbDif = gaur.get(Calendar.MONTH) - jaiotzeData.getMonth();
 
-		int hilabKop = (urteDif * 12) + (hilbDif > 0 ? hilbDif : 0);
+		//System.out.println(adina);
 
-		int urteKop = hilabKop / 12;
-		System.out.println(urteKop);
-
-		return (urteKop >= 18);
+		return (UtilDate.calculateAdina(jaiotzeData) >= 18);
 	}
 
-	public Pertsona erregistratu(String izena, String pasahitza, Date jaiotzeData) {
+	public Pertsona erregistratu(String izena, String pasahitza, Date jaiotzeData)
+			throws AdinTxikikoa, ErabiltzaileaExistizenDa {
 		// Aztertu ea aurretik existitzen den erabiltzailea izen horrekin
 		Pertsona e = this.getErabiltzailea(izena);
 		if (e == null) {
@@ -311,18 +305,22 @@ public class HibernateDataAccess implements DataAccessInterface {
 			// Aztertu ea adina >= 18 den
 			boolean adinaNahikoa = this.adinaDu(jaiotzeData);
 			if (adinaNahikoa) {
-				
+
 				Pertsona er = this.sortuErabiltzailea(izena, pasahitza, jaiotzeData);
 				return er;
-				
-			} else
-				return null;
-		} else
-			return null;
+
+			} else {
+
+				throw new AdinTxikikoa("Erabiltzaileak ezin du 18 urte baino gutxiago izan");
+
+			}
+		} else {
+			throw new ErabiltzaileaExistizenDa("Erabiltzaile izena ez dago erabilgarri");
+		}
 	}
 
 	public Pertsona sortuErabiltzailea(String izena, String pasahitza, Date jaiotzeData) {
-		this.open(); //wtf
+		this.open(); // wtf
 		session.beginTransaction();
 		// TODO: Soilik Erabiltzaileak sortu daitezke.
 		Pertsona er = new Erabiltzailea(izena, pasahitza, jaiotzeData);
@@ -330,15 +328,14 @@ public class HibernateDataAccess implements DataAccessInterface {
 		session.getTransaction().commit();
 		return er;
 	}
-	
-	
+
 	public List<Erabiltzailea> getErabiltzaileaGuztiak() {
 
 		session.beginTransaction();
 		Query q = session.createQuery("from Erbitlzailea");
 		List<Erabiltzailea> erabiltzaileak = q.list();
 		session.getTransaction().commit();
-		
+
 		return erabiltzaileak;
 	}
 
@@ -347,11 +344,8 @@ public class HibernateDataAccess implements DataAccessInterface {
 		Query q = session.createQuery("from Pertsona");
 		List<Pertsona> pertsonak = q.list();
 		session.getTransaction().commit();
-		
+
 		return pertsonak;
-		}
-
-
-
+	}
 
 }

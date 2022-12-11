@@ -11,6 +11,8 @@ import domain.Erabiltzailea;
 import domain.Event;
 import domain.Pertsona;
 import domain.Question;
+import exceptions.AdinTxikikoa;
+import exceptions.ErabiltzaileaExistizenDa;
 import exceptions.EventFinished;
 import exceptions.QuestionAlreadyExist;
 
@@ -130,7 +132,7 @@ public class BLFacadeImplementation  implements BLFacade {
 		}
 
 		@Override
-		public Pertsona erregistratu(String izena, String pasahitza, Date jaiotzeData) {
+		public Pertsona erregistratu(String izena, String pasahitza, Date jaiotzeData) throws AdinTxikikoa, ErabiltzaileaExistizenDa {
 			dbManager.open();
 			Pertsona e = dbManager.erregistratu(izena, pasahitza, jaiotzeData);
 			dbManager.close();

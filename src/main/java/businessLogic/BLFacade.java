@@ -10,6 +10,9 @@ import domain.Question;
 import java.util.Date;
 import java.util.List;
 
+import exceptions.AdinTxikikoa;
+import exceptions.ErabiltzaileaExistizenDa;
+
 //import domain.Booking;
 
 import exceptions.EventFinished;
@@ -58,7 +61,7 @@ public interface BLFacade  {
 	 
 	 public Pertsona existitzenDa(String izena, String pasahitza);
 		
-	 public Pertsona erregistratu(String izena, String pasahitza, Date jaiotzeData);
+	 public Pertsona erregistratu(String izena, String pasahitza, Date jaiotzeData) throws AdinTxikikoa, ErabiltzaileaExistizenDa;
 	 
 	 List<Erabiltzailea> getErabiltzaileaGuztiak();
 	 List<Pertsona> getPertsonaGuztiak();

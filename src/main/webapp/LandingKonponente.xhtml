@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -9,14 +10,87 @@
 	<f:view>
 		<span class="col-12"></span>
 		<span class="col-12"><h1 class="h1 text-center">Bets 2022</h1></span>
-		<span class="col-12 mx-auto text-center my-auto"> <h:commandButton
-				class="btn btn-primary btn-lg" value="Hasi saioa"
-				action="#{login.login}" />
+
+		<span class="col-12 text-center"><p:commandButton style=""
+				value="Hasi saioa" type="button" onclick="PF('login').show()"/></span>
+		<span class="col-12 text-center"> <p:commandButton
+				value="Erregistratu" type="button" onclick="PF('register').show()"/>
 		</span>
-		<span class="col-12 text-center my-auto"> <h:commandButton
-				class="btn btn-primary btn-lg" value="Erregistratu"
-				action="#{login.register}" />
-		</span>
+
+
+		<!--  Proba  Login-->
+
+		<p:dialog id='dialog' ajax='true' header="Hasi saioa"
+			widgetVar="login" showEffect="explode" position='975,325'
+			draggable="false" resizable='false'
+			style="width: 50% !important; height: 20% !important" width="400px" height="300px">
+
+			<h:form class="container">
+				<div class="row">
+					<p:focus />
+					<span class="col-12"></span> <span class="col-12"> <label
+						class="col-12 mb-2" for="UserName">Erabiltzaile izena</label> <h:inputText
+							class="col-12" id="UserName" value="#{login.izena}"
+							required="true"
+							requiredMessage="Erabiltzaile izenak ezin du hutsa izan"></h:inputText>
+					</span> <span class="col-12 pt-2"> <label class="col-12 mb-2"
+						for="Pasahitza">Pasahitza</label> <h:inputSecret class="col-12"
+							id="Pasahitza" value="#{login.pasahitza}" required="true"
+							requiredMessage="Pasahitzak ezin du hutsa izan"></h:inputSecret>
+					</span> <span class="col-12 py-3"> <p:commandButton
+							value="Hasi saioa" action="#{login.loginEgin}" ajax='true'
+							update=":mezuak" />
+					</span>
+				</div>
+			</h:form>
+		</p:dialog>
+
+
+		<!--  Proba  register-->
+
+
+		<p:dialog id='dialog2' ajax='true' header="Erregistratu"
+			widgetVar="register" showEffect="explode" position='975,325'
+			draggable="false" resizable='false' width="400px" height="300px">
+			
+			<h:form class="container">
+				<div class="row">
+					<p:focus />
+					
+					<span class="col-12"> <label class="col-12 mb-2"
+						for="UserNameR">Erabiltzaile izena: </label> <h:inputText
+							class="col-6 pt-2" id="UserNameR" value="#{login.izena}"
+							required="true"
+							requiredMessage="Erabiltzaile izenak ezin du hutsa izan"></h:inputText>
+						<p:tooltip for="UserNameR"
+							value="Hau izango da aplikazioan izango duzun erabiltzaile izena" />
+					</span> <span class="col-12 pt-2"> <label class="col-12 mb-2"
+						for="PasahitzaR">Pasahitza: </label> <p:password id="PasahitzaR"
+							value="#{login.pasahitza}" inline="true" feedback="true"
+							required="true" requiredMessage="Pasahitzak ezin du hutsa izan" />
+
+					</span> <span class="col-12 pt-2"> <label class="col-12 mb-2"
+						for="JaiotzeData">Jaiotze data: </label> <p:calendar id="data"
+							value="#{login.jaiotzeData}" navigator="true" mode="popup"
+							required="true" requiredMessage="Jaiotze data aukeratu beha da">
+							<p:ajax event="dateSelect" listener="#{login.onDateSelect}"></p:ajax>
+
+						</p:calendar>
+					</span> <span class="col-12 py-3"> <p:commandButton
+							value="Erregistratu" action="#{login.erregistratu}" ajax="true"
+							update=":mezuak" />
+
+					</span>
+				</div>
+			</h:form>
+		</p:dialog>
+
+
+
+		<!--  Proba -->
+
+
+		<p:growl id="mezuak" showDetail="true" sticky="true" life="5000" />
 	</f:view>
 </ui:composition>
 </html>

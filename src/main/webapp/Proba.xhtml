@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title><ui:insert name="izenburua"></ui:insert></title>
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="bootstrap.css" />
+
+	<!-- JavaScript Bundle with Popper -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+		crossorigin="anonymous"></script>
+</h:head>
+
+<h:body>
+	<h:outputStylesheet library="css" name="style.css" />
+
+	<p:layout fullPage="true">
+		<p:layoutUnit position="north" size="50" styleClass='ui-top'>
+			<p:clock></p:clock>
+		</p:layoutUnit>
+		<p:layoutUnit position="south" size="100">
+			<h:outputText value="Bottom content." />
+		</p:layoutUnit>
+		<p:layoutUnit position="east" size="200">
+			<h:form>
+				<p:menu>
+					<p:submenu label="#{login.izena}">
+						<p:menuitem value="Aginte panela" action="#{bets.atzera}" />
+						<p:menuitem value="Amaitu saioa" action="#{login.logOut}" />
+					</p:submenu>
+					<p:submenu label="Aukerak">
+						<p:menuitem value="Ikusi galderak" action="#{bets.find}" />
+						<p:menuitem value="Sortu galdera" action="#{bets.create}" />
+					</p:submenu>
+				</p:menu>
+			</h:form>
+
+		</p:layoutUnit>
+		<p:layoutUnit position="center">
+			<h:outputText value="Center Content" />
+		</p:layoutUnit>
+	</p:layout>
+
+</h:body>
+
+</html>
+
+
+
+
+ 
+
+

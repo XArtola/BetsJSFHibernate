@@ -1,63 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROCESS model-entity="JSFProcess">
- <PROCESS-ITEM NAME="rules:#main.xhtml" PATH="/main.xhtml"
-  SHAPE="256,33,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#main.xhtml:0" NAME="item" PATH="/main.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="find::#FindQuestions.xhtml" NAME="output"
-    PATH="/FindQuestions.xhtml" TARGET="rules:#FindQuestions.xhtml"
-    TITLE="find" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
-  <PROCESS-ITEM ID="rules:#main.xhtml:1" NAME="item1" PATH="/main.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="create::#CreateQuestion.xhtml" NAME="output"
-    PATH="/CreateQuestion.xhtml" TARGET="rules:#CreateQuestion.xhtml"
-    TITLE="create" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#CreateQuestion.xhtml"
   PATH="/CreateQuestion.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#CreateQuestion.xhtml:0" NAME="item"
    PATH="/CreateQuestion.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="atzera::#main.xhtml" NAME="output"
-    PATH="/main.xhtml" TARGET="rules:#main.xhtml" TITLE="atzera" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="atzera::#Main.xhtml" NAME="output"
+    PATH="/Main.xhtml" TARGET="rules:#Main.xhtml" TITLE="atzera" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#CreateQuestion.xhtml:1" NAME="item1"
+   PATH="/CreateQuestion.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="logOut::#LandingPage.xhtml" NAME="output"
+    PATH="/LandingPage.xhtml" TARGET="rules:#LandingPage.xhtml"
+    TITLE="logOut" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#CreateQuestion.xhtml:2" NAME="item2"
+   PATH="/CreateQuestion.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="find::#FindQuestions.xhtml" NAME="output"
+    PATH="/FindQuestions.xhtml" TARGET="rules:#FindQuestions.xhtml"
+    TITLE="find" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#FindQuestions.xhtml"
   PATH="/FindQuestions.xhtml" SHAPE="480,17,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#FindQuestions.xhtml:0" NAME="item"
    PATH="/FindQuestions.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="atzera::#main.xhtml" NAME="output"
-    PATH="/main.xhtml" TARGET="rules:#main.xhtml" TITLE="atzera" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="atzera::#Main.xhtml" NAME="output"
+    PATH="/Main.xhtml" TARGET="rules:#Main.xhtml" TITLE="atzera" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#FindQuestions.xhtml:1" NAME="item1"
+   PATH="/FindQuestions.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="logOut::#LandingPage.xhtml" NAME="output"
+    PATH="/LandingPage.xhtml" TARGET="rules:#LandingPage.xhtml"
+    TITLE="logOut" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#FindQuestions.xhtml:2" NAME="item2"
+   PATH="/FindQuestions.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="create::#CreateQuestion.xhtml" NAME="output"
+    PATH="/CreateQuestion.xhtml" TARGET="rules:#CreateQuestion.xhtml"
+    TITLE="create" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#landingPage.xhtml" PATH="/landingPage.xhtml"
-  SHAPE="272,177,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#landingPage.xhtml:0" NAME="item"
-   PATH="/landingPage.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
-    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
-  <PROCESS-ITEM ID="rules:#landingPage.xhtml:1" NAME="item1"
-   PATH="/landingPage.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="register::#register.xhtml" NAME="output"
-    PATH="/register.xhtml" TARGET="rules:#register.xhtml"
+ <PROCESS-ITEM NAME="rules:#LandingPage.xhtml" PATH="/LandingPage.xhtml"
+  SHAPE="320,209,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#LandingPage.xhtml:0" NAME="item"
+   PATH="/LandingPage.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="register::#Register.xhtml" NAME="output"
+    PATH="/Register.xhtml" TARGET="rules:#Register.xhtml"
     TITLE="register" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#login.xhtml" PATH="/login.xhtml"
-  SHAPE="496,161,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#login.xhtml:0" NAME="item"
-   PATH="/login.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="aurrera::#main.xhtml" NAME="output"
-    PATH="/main.xhtml" TARGET="rules:#main.xhtml" TITLE="aurrera" model-entity="JSFProcessItemOutput"/>
+  <PROCESS-ITEM ID="rules:#LandingPage.xhtml:1" NAME="item1"
+   PATH="/LandingPage.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#Login.xhtml" NAME="output"
+    PATH="/Login.xhtml" TARGET="rules:#Login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#LandingPage.xhtml:2" NAME="item2"
+   PATH="/LandingPage.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="aurrera::#Main.xhtml" NAME="output"
+    PATH="/Main.xhtml" TARGET="rules:#Main.xhtml" TITLE="aurrera" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#register.xhtml" PATH="/register.xhtml"
-  SHAPE="32,161,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#register.xhtml:0" NAME="item"
-   PATH="/register.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="atzera::#landingPage.xhtml" NAME="output"
-    PATH="/landingPage.xhtml" TARGET="rules:#landingPage.xhtml"
+ <PROCESS-ITEM NAME="rules:#Register.xhtml" PATH="/Register.xhtml"
+  SHAPE="48,193,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#Register.xhtml:0" NAME="item"
+   PATH="/Register.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="atzera::#LandingPage.xhtml" NAME="output"
+    PATH="/LandingPage.xhtml" TARGET="rules:#LandingPage.xhtml"
     TITLE="atzera" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#Login.xhtml" PATH="/Login.xhtml"
+  SHAPE="48,401,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#Login.xhtml:0" NAME="item"
+   PATH="/Login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="atzera::#LandingPage.xhtml" NAME="output"
+    PATH="/LandingPage.xhtml" TARGET="rules:#LandingPage.xhtml"
+    TITLE="atzera" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#Login.xhtml:1" NAME="item1"
+   PATH="/Login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="aurrera::#Main.xhtml" NAME="output"
+    PATH="/Main.xhtml" TARGET="rules:#Main.xhtml" TITLE="aurrera" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#Main.xhtml" PATH="/Main.xhtml"
+  SHAPE="592,193,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#Main.xhtml:0" NAME="item" PATH="/Main.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="find::#FindQuestions.xhtml" NAME="output"
+    PATH="/FindQuestions.xhtml" TARGET="rules:#FindQuestions.xhtml"
+    TITLE="find" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#Main.xhtml:1" NAME="item1" PATH="/Main.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="create::#CreateQuestion.xhtml" NAME="output"
+    PATH="/CreateQuestion.xhtml" TARGET="rules:#CreateQuestion.xhtml"
+    TITLE="create" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#Main.xhtml:2" NAME="item2" PATH="/Main.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="logOut::#LandingPage.xhtml" NAME="output"
+    PATH="/LandingPage.xhtml" TARGET="rules:#LandingPage.xhtml"
+    TITLE="logOut" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#Main.xhtml:3" NAME="item3" PATH="/Main.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="atzera::#Main.xhtml" NAME="output"
+    PATH="/Main.xhtml" TARGET="rules:#Main.xhtml" TITLE="atzera" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
 </PROCESS>

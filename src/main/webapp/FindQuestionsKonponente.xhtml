@@ -10,7 +10,7 @@
 
 
 		<h:form id="form" class="row">
-			<div class="col-md-6 col-sm-12 d-flex justify-content-center pt-5">
+			<div class="col-md-4 col-sm-12 d-flex justify-content-center pt-5">
 				<p:calendar id="data" value="#{bets.data}" navigator="false"
 					mode="inline">
 					<p:ajax event="dateSelect" listener="#{bets.onDateSelect}"
@@ -19,7 +19,7 @@
 
 			</div>
 
-			<div class="col-md-6 col-sm-12 pt-5">
+			<div class="col-md-4 col-sm-12 pt-5">
 				<p:dataTable id="taulaEvent" value="#{bets.gertaerak}" var="item"
 					selectionMode="single" selection="#{bets.gertaera}" border="1"
 					rowKey="#{item.eventNumber}">
@@ -31,7 +31,8 @@
 				</p:dataTable>
 			</div>
 
-			<div class="col-sm-12 d-flex justify-content-center pt-5">
+
+			<div class="col-md-4 col-sm-12 d-flex justify-content-center pt-5">
 				<p:dataTable id="taulaQuestion" value="#{bets.galderak}" var="item"
 					selectionMode="single" selection="#{bets.galdera}" border="1"
 					rowKey="#{item.questionNumber}">
@@ -41,16 +42,9 @@
 				</p:dataTable>
 			</div>
 
+
+
 		</h:form>
-
-
-		<h:form class="d-flex justify-content-center pb-4 pt-3">
-			<h:commandButton class="btn btn-primary" value="Back"
-				action="#{bets.atzera}" />
-		</h:form>
-
-
-
 
 	</f:view>
 </ui:composition>

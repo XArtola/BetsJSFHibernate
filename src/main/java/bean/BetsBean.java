@@ -19,21 +19,21 @@ import exceptions.QuestionAlreadyExist;
 
 public class BetsBean {
 
-	Date data;
+	Date data = null;
 
 	BLFacade facadeBL;
 
-	List<Event> gertaerak;
+	List<Event> gertaerak = new ArrayList<Event>();
 
-	Event gertaera;
+	Event gertaera = null;
 
-	List<Question> galderak;
+	List<Question> galderak = new ArrayList<Question>();
 
-	Question galdera;
+	Question galdera = null;;
 
-	int minBet;
+	int minBet = 1;
 
-	String question;
+	String question = "";
 
 	public BetsBean() {
 
@@ -99,25 +99,26 @@ public class BetsBean {
 
 	public String create() {
 
+		garbitu();
+
 		return "create";
 	}
 
 	public String find() {
+
+		garbitu();
+
 		return "find";
 	}
 
-	public String atzera() {
-		return "atzera";
-	}
+	/*
+	 * public String atzera() { return "atzera"; }
+	 */
 
 	public void onDateSelect(SelectEvent event) {
 
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Data aukeratua: " + event.getObject()));
 		gertaerak = facadeBL.getEvents((Date) event.getObject());
-		
-		
-		
-
 	}
 
 	public void onEventSelect(SelectEvent event) {
@@ -143,17 +144,15 @@ public class BetsBean {
 
 	public void gordeGaldera() {
 
-
 		if (gertaera == null) {
-		//	FacesContext.getCurrentInstance().addMessage(null,
-					//new FacesMessage("Errorea: Gertaera bat aukeratu behar da"));
-			
-			
-			FacesContext context = FacesContext.getCurrentInstance();
-			//context.addMessage("somekey1", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Connection failed.", "Erorrea"));
-			context.addMessage("anotherkey2", new FacesMessage(FacesMessage.SEVERITY_WARN, "Connection failed.", "Erorrea"));
-			context.addMessage("anotherkey1", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Connection failed.", "Erorrea"));
-	
+			// FacesContext.getCurrentInstance().addMessage(null,
+			// new FacesMessage("Errorea: Gertaera bat aukeratu behar da"));
+
+			// FacesContext context = FacesContext.getCurrentInstance();
+			// context.addMessage("somekey1", new FacesMessage(FacesMessage.SEVERITY_ERROR,
+			// "Connection failed.", "Erorrea"));
+			FacesContext.getCurrentInstance().addMessage("createMezuak",
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Errorea", "Gertaera bat aukeratu behar da"));
 		}
 
 		else {
@@ -162,12 +161,36 @@ public class BetsBean {
 			try {
 				facadeBL.createQuestion(gertaera, this.question, this.minBet);
 			} catch (EventFinished e) {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Errorea: Data hori pasata dago"));
+				FacesContext.getCurrentInstance().addMessage("createMezuak",
+						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Errorea", "Data hori pasata dago"));
 			} catch (QuestionAlreadyExist e) {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Errorea: DGaldera hori existizen da"));
+				FacesContext.getCurrentInstance().addMessage("createMezuak",
+						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Errorea", "Galdera hori existizen da"));
 			}
 
+			FacesContext.getCurrentInstance().addMessage("createMezuak",
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Informazioa", "Galdera modu zuzenean sortu da"));
+
 		}
+
+	}
+
+	private void garbitu() {
+
+		this.data = null;
+
+		this.gertaerak = new ArrayList<Event>();
+
+		this.gertaera = null;
+
+		this.galderak = new ArrayList<Question>();
+
+		this.galdera = null;
+		;
+
+		this.minBet = 1;
+
+		this.question = "";
 
 	}
 

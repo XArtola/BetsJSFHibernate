@@ -8,9 +8,6 @@
 <ui:composition>
 	<f:view>
 
-
-		<h1>Jarri hemen erabiltzaileari buruzko informazioa</h1>
-
 		<div class="row">
 
 			<div class="col-12">
@@ -19,7 +16,7 @@
 					<h1>Erabitlzaile izena</h1>
 				</span> 
 				<span class="col-6">
-					<h1> IZENAAA LORTUUUUU </h1>
+					<h:outputText value=" #{login.izena}"/>
 				</span>
 				
 				
@@ -27,13 +24,23 @@
 					<h1>Saldoa</h1>
 				</span> 
 				<span class="col-6">
-					<h1> DIRUEEEEEEEE </h1>
+					<h:outputText value=" #{login.erabiltzailea.saldoa}"/>
+				</span>	
+				
+				<span class="col-6">
+					<h1>Adina</h1>
+				</span> 
+				<span class="col-6">
+					<h:outputText value=" #{login.erabiltzailea.adina}"/>
 				</span>
 				
 
 			</div>
 
 		</div>
+
+		<p:barChart value="#{bean.model}" legendPosition="ne" />
+
 
 	</f:view>
 </ui:composition>

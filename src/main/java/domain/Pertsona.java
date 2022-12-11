@@ -1,10 +1,15 @@
 package domain;
 
+import java.time.LocalDate;
+import java.time.Year;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+
+import java.time.temporal.ChronoUnit;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -13,6 +18,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import configuration.UtilDate;
 
 
 @Entity
@@ -63,17 +70,11 @@ public abstract class Pertsona {
 	}*/
 
 	public Pertsona(String izena, String pasahitza, Date jaiotzeData) {
-		Calendar gaur = Calendar.getInstance();
-		int urteDif = Math.abs(gaur.get(Calendar.YEAR) - jaiotzeData.getYear());
-		int hilbDif = gaur.get(Calendar.MONTH) - jaiotzeData.getMonth();
-
-		int hilabKop = urteDif * 12 + (hilbDif > 0 ? hilbDif : 0);
-
-		int adina = hilabKop / 12;
-		
+					
+				
 		this.izena = izena;
 		this.pasahitza = pasahitza;
-		this.adina = adina;
+		this.adina = UtilDate.calculateAdina(jaiotzeData);
 
 		
 	}

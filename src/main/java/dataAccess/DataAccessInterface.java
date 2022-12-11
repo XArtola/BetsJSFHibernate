@@ -9,6 +9,8 @@ import domain.Erabiltzailea;
 import domain.Event;
 import domain.Pertsona;
 import domain.Question;
+import exceptions.AdinTxikikoa;
+import exceptions.ErabiltzaileaExistizenDa;
 import exceptions.QuestionAlreadyExist;
 
 public interface DataAccessInterface {
@@ -83,7 +85,7 @@ public interface DataAccessInterface {
 
 	boolean adinaDu(Date jaiotzeData);
 
-	Pertsona erregistratu(String izena, String pasahitza, Date jaiotzeData);
+	Pertsona erregistratu(String izena, String pasahitza, Date jaiotzeData) throws AdinTxikikoa, ErabiltzaileaExistizenDa;
 
 	Pertsona sortuErabiltzailea(String izena, String pasahitza, Date jaiotzeData);
 	
