@@ -9,6 +9,8 @@ import javax.faces.context.FacesContext;
 
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
+import org.primefaces.model.chart.ChartSeries;
+import org.primefaces.component.chart.bar.BarChart;
 
 import businessLogic.BLFacade;
 import domain.Erabiltzailea;
@@ -25,8 +27,6 @@ public class LoginBean {
 	private String pasahitza;
 	private int adina;
 	
-	private int saldoa;
-
 	Date jaiotzeData;
 
 	//Pertsona pertsona;
@@ -231,21 +231,30 @@ public class LoginBean {
 	
 	/////////////////////////////////PROBA CHART//////////////////////////////////////////////////////
 	///    http://www.primefaces.org:8080/showcase/ui/chart/bar.xhtml?jfwid=37731
-	/*private CartesianChartModel model;
-	public ChartBean() {
-	model = new CartesianChartModel();
-	ChartSeries boys = new ChartSeries();
-	boys.setLabel("Boys");
-	boys.set("2004", 120);
-	boys.set("2005", 100);
-	ChartSeries girls = new ChartSeries();
-	girls.setLabel("Girls");
-	girls.set("2004", 52);
-	girls.set("2005", 60);
-	model.addSeries(boys);
-	model.addSeries(girs);
-	}
-	public CartesianChartModel getModel() { return model; }*/
+	private BarChart initBarModel() {
+		BarChart model = new BarChart();
+
+        ChartSeries boys = new ChartSeries();
+        boys.setLabel("Boys");
+        boys.set("2004", 120);
+        boys.set("2005", 100);
+        boys.set("2006", 44);
+        boys.set("2007", 150);
+        boys.set("2008", 25);
+
+        ChartSeries girls = new ChartSeries();
+        girls.setLabel("Girls");
+        girls.set("2004", 52);
+        girls.set("2005", 60);
+        girls.set("2006", 110);
+        girls.set("2007", 135);
+        girls.set("2008", 120);
+
+        model.;
+        model.addSeries(girls);
+
+        return model;
+    }
 	
 	
 
