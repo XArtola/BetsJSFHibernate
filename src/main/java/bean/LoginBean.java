@@ -1,7 +1,9 @@
 package bean;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -15,13 +17,15 @@ import org.primefaces.component.chart.bar.BarChart;
 import businessLogic.BLFacade;
 import domain.Erabiltzailea;
 import domain.Pertsona;
+import domain.Rola;
 import exceptions.AdinTxikikoa;
 import exceptions.ErabiltzaileaExistizenDa;
 
 public class LoginBean {
+	
 	BLFacade facadeBL;
 
-	Erabiltzailea erabiltzailea = new Erabiltzailea();
+	//Erabiltzailea erabiltzailea = new Erabiltzailea();
 
 	private String izena;
 	private String pasahitza;
@@ -29,21 +33,27 @@ public class LoginBean {
 	
 	Date jaiotzeData;
 
-	//Pertsona pertsona;
+	Pertsona pertsona;
 
 	boolean loged = false;
+	
+	List<Rola> rolak = new ArrayList<Rola>();;
+	
+	Rola rola;
 
 	public LoginBean() {
 
 		facadeBL = FacadeBean.getBusinessLogic();
+		rolak.add(new Rola(1, "erabiltzailea"));
+		rolak.add(new Rola(2, "administratzailea"));
 	}
 
-	public Erabiltzailea getErabiltzailea() {
-		return erabiltzailea;
+	public Pertsona getPertsona() {
+		return pertsona;
 	}
 
-	public void setErabiltzailea(Erabiltzailea erabiltzailea) {
-		this.erabiltzailea = erabiltzailea;
+	public void setPertsona(Pertsona pertsona) {
+		this.pertsona = pertsona;
 	}
 
 	public String getIzena() {
@@ -77,6 +87,22 @@ public class LoginBean {
 	public void setJaiotzeData(Date jaiotzeData) {
 		this.jaiotzeData = jaiotzeData;
 	}
+	
+	public List<Rola> getRolak() {
+		return rolak;
+	}
+
+	public void setRolak(List<Rola> rolak) {
+		this.rolak = rolak;
+	}
+
+	public Rola getRola() {
+		return rola;
+	}
+
+	public void setRola(Rola rola) {
+		this.rola = rola;
+	}
 
 	public String login() {
 		return "login";
@@ -90,9 +116,9 @@ public class LoginBean {
 
 		FacesContext context = FacesContext.getCurrentInstance();
 
-		this.erabiltzailea = (Erabiltzailea) facadeBL.existitzenDa(izena, pasahitza);
+		this.pertsona =  facadeBL.existitzenDa(izena, pasahitza);
 
-		if (this.erabiltzailea != null) {
+		if (this.pertsona != null) {
 
 			this.loged = true;
 
@@ -118,7 +144,7 @@ public class LoginBean {
 
 		try {
 
-			this.erabiltzailea = (Erabiltzailea) facadeBL.erregistratu(izena, pasahitza, jaiotzeData);
+			this.pertsona = facadeBL.erregistratu(izena, pasahitza, jaiotzeData, rola.getMota());
 
 		} catch (AdinTxikikoa e) {
 			context.addMessage("mezuak", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", e.getMessage()));
@@ -128,7 +154,7 @@ public class LoginBean {
 
 		}
 
-		if (this.erabiltzailea != null) {
+		if (this.pertsona != null) {
 
 			this.loged = true;
 
@@ -142,8 +168,6 @@ public class LoginBean {
 
 	public void onDateSelect(SelectEvent event) {
 
-		// FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Data
-		// aukeratua: " + event.getObject()));
 		this.jaiotzeData = (Date) event.getObject();
 
 	}
@@ -180,58 +204,24 @@ public class LoginBean {
 
 		this.loged = false;
 		
-		this.erabiltzailea =null;
+		this.pertsona =null;
 
 		return "logOut";
 
 	}
 
-	private void garbitu() {
+/*	private void garbitu() {
 
 		this.izena = "";
 		this.pasahitza = "";
 		this.jaiotzeData = null;
 		this.erabiltzailea = null;
 
-	}
-	/*
-	 * public void validateIzena(FacesContext context, UIComponent comp, Object
-	 * value) {
-	 * 
-	 * System.out.println("inside validate method");
-	 * 
-	 * String izena = (String) value;
-	 * 
-	 * if (izena.length() < 1) { // ((UIInput) comp).setValid(false);
-	 * 
-	 * 
-	 * context.addMessage("mezuak", new FacesMessage(FacesMessage.SEVERITY_ERROR,
-	 * "Error", "Erabiltzaile izenak ezin du hutsa izan"));
-	 * 
-	 * }
-	 * 
-	 * }
-	 * 
-	 * public void validatePasahitza(FacesContext context, UIComponent comp, Object
-	 * value) {
-	 * 
-	 * System.out.println("inside validate method");
-	 * 
-	 * String pass = (String) value;
-	 * 
-	 * if (pass.length() < 1) { // ((UIInput) comp).setValid(false);
-	 * 
-	 * context.addMessage("mezuak", new FacesMessage(FacesMessage.SEVERITY_ERROR,
-	 * "Error", "Psahitzak ezin du hutsa izan"));
-	 * 
-	 * }
-	 * 
-	 * }
-	 */
-	
+	}*/
+
 	/////////////////////////////////PROBA CHART//////////////////////////////////////////////////////
 	///    http://www.primefaces.org:8080/showcase/ui/chart/bar.xhtml?jfwid=37731
-	private BarChart initBarModel() {
+/*	private BarChart initBarModel() {
 		BarChart model = new BarChart();
 
         ChartSeries boys = new ChartSeries();
@@ -254,7 +244,7 @@ public class LoginBean {
         model.addSeries(girls);
 
         return model;
-    }
+    }*/
 	
 	
 

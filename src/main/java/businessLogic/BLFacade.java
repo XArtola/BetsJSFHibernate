@@ -61,7 +61,7 @@ public interface BLFacade  {
 	 
 	 public Pertsona existitzenDa(String izena, String pasahitza);
 		
-	 public Pertsona erregistratu(String izena, String pasahitza, Date jaiotzeData) throws AdinTxikikoa, ErabiltzaileaExistizenDa;
+	 public Pertsona erregistratu(String izena, String pasahitza, Date jaiotzeData, String rola) throws AdinTxikikoa, ErabiltzaileaExistizenDa;
 	 
 	 List<Erabiltzailea> getErabiltzaileaGuztiak();
 	 List<Pertsona> getPertsonaGuztiak();

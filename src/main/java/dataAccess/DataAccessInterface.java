@@ -85,10 +85,11 @@ public interface DataAccessInterface {
 
 	boolean adinaDu(Date jaiotzeData);
 
-	Pertsona erregistratu(String izena, String pasahitza, Date jaiotzeData) throws AdinTxikikoa, ErabiltzaileaExistizenDa;
+	Pertsona erregistratu(String izena, String pasahitza, Date jaiotzeData, String rola) throws AdinTxikikoa, ErabiltzaileaExistizenDa;
 
 	Pertsona sortuErabiltzailea(String izena, String pasahitza, Date jaiotzeData);
 	
+	Pertsona sortuAdministratzailea(String izena, String pasahitza, Date jaiotzeData);
 
 	public List<Erabiltzailea> getErabiltzaileaGuztiak();
 

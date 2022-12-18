@@ -19,5 +19,6 @@
   <mapping class="domain.Question"/>
   <mapping class="domain.Pertsona"/>
   <mapping class="domain.Erabiltzailea"/>
+  <mapping class="domain.Admin"/>
  </session-factory>
 </hibernate-configuration>

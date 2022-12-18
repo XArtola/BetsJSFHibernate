@@ -111,9 +111,9 @@ public class BetsBean {
 		return "find";
 	}
 
-	/*
-	 * public String atzera() { return "atzera"; }
-	 */
+	public String atzera() {
+		return "atzera";
+	}
 
 	public void onDateSelect(SelectEvent event) {
 
@@ -128,35 +128,14 @@ public class BetsBean {
 
 	}
 
-	/*
-	 * public void onEventSelectLista(SelectEvent event) {
-	 * 
-	 * System.out.println("fahbdsklfbskljsbdfklbbdfshklbdf");
-	 * 
-	 * 
-	 * 
-	 * gertaera = (Event) event.getObject();
-	 * 
-	 * System.out.println(gertaera.toString());
-	 * 
-	 * }
-	 */
-
 	public void gordeGaldera() {
 
 		if (gertaera == null) {
-			// FacesContext.getCurrentInstance().addMessage(null,
-			// new FacesMessage("Errorea: Gertaera bat aukeratu behar da"));
-
-			// FacesContext context = FacesContext.getCurrentInstance();
-			// context.addMessage("somekey1", new FacesMessage(FacesMessage.SEVERITY_ERROR,
-			// "Connection failed.", "Erorrea"));
 			FacesContext.getCurrentInstance().addMessage("createMezuak",
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Errorea", "Gertaera bat aukeratu behar da"));
 		}
 
 		else {
-			// System.out.println(gertaera.toString()+" "+question+ " "+ minBet );
 
 			try {
 				facadeBL.createQuestion(gertaera, this.question, this.minBet);
@@ -186,7 +165,6 @@ public class BetsBean {
 		this.galderak = new ArrayList<Question>();
 
 		this.galdera = null;
-		;
 
 		this.minBet = 1;
 

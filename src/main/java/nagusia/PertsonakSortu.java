@@ -1,5 +1,7 @@
 package nagusia;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -20,13 +22,13 @@ public class PertsonakSortu {
 	private int adina;
 
 
-	private void createAndStoreBetsPertsona(String izena, String pasahitza, int adina) {
+	private void createAndStoreBetsPertsona(String izena, String pasahitza, Date jaiotzeData) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		Pertsona p = new Erabiltzailea();
 		p.setIzena(izena);
 		p.setPasahitza(pasahitza);
-		p.setAdina(adina);
+		p.setJaiotzeData(jaiotzeData);
 		session.persist(p);
 		session.getTransaction().commit();
 	}
@@ -40,11 +42,22 @@ public class PertsonakSortu {
 	}
 
 	public static void main(String[] args) {
+		
+		String date_string = "26-09-1989";
+	    SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");      
+	    Date date = null;;
+		try {
+			date = formatter.parse(date_string);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+		
 		PertsonakSortu ps = new PertsonakSortu();
 		System.out.println("Pertsonen sorkuntza:");
-		ps.createAndStoreBetsPertsona("user", "pass", 18);
-		ps.createAndStoreBetsPertsona("user2", "pass",24);
-		ps.createAndStoreBetsPertsona("user3", "pass", 30);
+		ps.createAndStoreBetsPertsona("user", "pass", date);
+		ps.createAndStoreBetsPertsona("user2", "pass",date);
+		ps.createAndStoreBetsPertsona("user3", "pass", date);
 		System.out.println("Pertsonen zerrenda:");
 		List pertsonak = ps.pertsonakZerrendatu();
 		for (int i = 0; i < pertsonak.size(); i++) {

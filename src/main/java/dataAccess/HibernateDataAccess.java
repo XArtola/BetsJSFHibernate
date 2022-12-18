@@ -1,5 +1,6 @@
 package dataAccess;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
@@ -17,6 +18,7 @@ import org.hibernate.Session;
 
 import configuration.UtilDate;
 import dataAccess.HibernateUtil;
+import domain.Admin;
 import domain.Erabiltzailea;
 import domain.Event;
 import domain.Pertsona;
@@ -141,7 +143,11 @@ public class HibernateDataAccess implements DataAccessInterface {
 			session.persist(ev19);
 			session.persist(ev20);
 
-			Erabiltzailea er1 = new Erabiltzailea("user", "pass", new Date());
+			String date_string = "26-09-1989";
+			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+			Date date = formatter.parse(date_string);
+
+			Erabiltzailea er1 = new Erabiltzailea("user", "pass", date);
 			session.persist(er1);
 
 			session.getTransaction().commit();
@@ -190,23 +196,9 @@ public class HibernateDataAccess implements DataAccessInterface {
 
 		for (Event ev : events) {
 			System.out.println(ev.toString());
-			// res.add(ev);
 		}
 		session.getTransaction().commit();
 		return events;
-
-		/*
-		 * Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		 * session.beginTransaction();
-		 * 
-		 * Query q = session.createQuery("from Event where data= :date");
-		 * q.setParameter("date", date);
-		 * 
-		 * List<Event> events = q.list();
-		 * 
-		 * session.getTransaction().commit(); return events;
-		 * 
-		 */
 
 	}
 
@@ -219,13 +211,6 @@ public class HibernateDataAccess implements DataAccessInterface {
 
 		Date firstDayMonthDate = UtilDate.firstDayMonth(date);
 		Date lastDayMonthDate = UtilDate.lastDayMonth(date);
-
-		/*
-		 * TypedQuery<Date> query = db.
-		 * createQuery("SELECT DISTINCT ev.eventDate FROM Event ev WHERE ev.eventDate BETWEEN ?1 and ?2"
-		 * ,Date.class); query.setParameter(1, firstDayMonthDate); query.setParameter(2,
-		 * lastDayMonthDate);
-		 */
 
 		Query q = session
 				.createQuery("SELECT DISTINCT ev.eventDate FROM Event ev WHERE ev.eventDate BETWEEN :1 and :2");
@@ -256,9 +241,6 @@ public class HibernateDataAccess implements DataAccessInterface {
 		return ev.DoesQuestionExists(question);
 
 	}
-	/////////////////////////////////////////////////////////////////////////////////////////////////////
-	// CUARENTENA
-	/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public boolean existitzenDa(String izena, String pasahitza) {
 		session.beginTransaction();
@@ -285,18 +267,14 @@ public class HibernateDataAccess implements DataAccessInterface {
 		return erabiltzailea;
 	}
 
-	/////////////////////////////////////////////////////////////////////////////////////////////////////
-	// CUARENTENA
-	/////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	public boolean adinaDu(Date jaiotzeData) {
 
-		//System.out.println(adina);
+		// System.out.println(adina);
 
 		return (UtilDate.calculateAdina(jaiotzeData) >= 18);
 	}
 
-	public Pertsona erregistratu(String izena, String pasahitza, Date jaiotzeData)
+	public Pertsona erregistratu(String izena, String pasahitza, Date jaiotzeData, String rola)
 			throws AdinTxikikoa, ErabiltzaileaExistizenDa {
 		// Aztertu ea aurretik existitzen den erabiltzailea izen horrekin
 		Pertsona e = this.getErabiltzailea(izena);
@@ -306,8 +284,21 @@ public class HibernateDataAccess implements DataAccessInterface {
 			boolean adinaNahikoa = this.adinaDu(jaiotzeData);
 			if (adinaNahikoa) {
 
-				Pertsona er = this.sortuErabiltzailea(izena, pasahitza, jaiotzeData);
-				return er;
+				Pertsona p = null;
+
+				if (rola == "erabiltzailea") {
+
+					p = this.sortuErabiltzailea(izena, pasahitza, jaiotzeData);
+
+				}
+
+				else if (rola == "administratzailea") {
+
+					p = this.sortuAdministratzailea(izena, pasahitza, jaiotzeData);
+
+				}
+
+				return p;
 
 			} else {
 
@@ -327,6 +318,16 @@ public class HibernateDataAccess implements DataAccessInterface {
 		session.persist(er);
 		session.getTransaction().commit();
 		return er;
+	}
+
+	public Pertsona sortuAdministratzailea(String izena, String pasahitza, Date jaiotzeData) {
+		this.open(); // wtf
+		session.beginTransaction();
+		// TODO: Soilik Erabiltzaileak sortu daitezke.
+		Pertsona ad = new Admin(izena, pasahitza, jaiotzeData);
+		session.persist(ad);
+		session.getTransaction().commit();
+		return ad;
 	}
 
 	public List<Erabiltzailea> getErabiltzaileaGuztiak() {

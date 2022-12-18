@@ -10,38 +10,41 @@
 
 		<div class="row">
 
-			<div class="col-12">
+			<div class=" col-6">
+				<p:panel header="Informzaio garrantzitsua">
+					<p>Aplikazio honetan sartutako dirua apustuetan galduz gero aplikazioak ez du dirua bueltatzeko erantzukizunik hartzen.</p>
+					<p>Jokatu bakarrik gsltzeko prest zauden dirua</p>
+				</p:panel>
+			</div>
 
-				<span class="col-6">
-					<h1>Erabitlzaile izena</h1>
+
+			<div class="col-6">
+
+				<span class="col-12">
+					<h5>Erabitlzaile izena</h5>
+				</span> <span class="col-12"> <h:outputText value=" #{login.izena}" />
+				</span><span class="col-12">
+					<h5>Adina</h5>
 				</span> 
-				<span class="col-6">
-					<h:outputText value=" #{login.izena}"/>
+	
+				<span class="col-12"> <h:outputText
+						value=" #{login.pertsona.adina}" />
 				</span>
 				
-				
-				<span class="col-6">
-					<h1>Saldoa</h1>
+				<span class="col-12">
+					<h5>Rola</h5>
 				</span> 
-				<span class="col-6">
-					<h:outputText value=" #{login.erabiltzailea.saldoa}"/>
-				</span>	
-				
-				<span class="col-6">
-					<h1>Adina</h1>
-				</span> 
-				<span class="col-6">
-					<h:outputText value=" #{login.erabiltzailea.adina}"/>
+	
+				<span class="col-12"> <h:outputText
+						value=" #{login.rola}" />
 				</span>
-				
+
 
 			</div>
 
 		</div>
 
-	<!--  	<p:barChart value="#{bean.model}" legendPosition="ne" /> -->
-
-
+		<!--  	<p:barChart value="#{bean.model}" legendPosition="ne" /> -->
 	</f:view>
 </ui:composition>
 </html>

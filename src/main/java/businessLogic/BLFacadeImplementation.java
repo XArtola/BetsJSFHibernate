@@ -132,9 +132,9 @@ public class BLFacadeImplementation  implements BLFacade {
 		}
 
 		@Override
-		public Pertsona erregistratu(String izena, String pasahitza, Date jaiotzeData) throws AdinTxikikoa, ErabiltzaileaExistizenDa {
+		public Pertsona erregistratu(String izena, String pasahitza, Date jaiotzeData, String rola) throws AdinTxikikoa, ErabiltzaileaExistizenDa {
 			dbManager.open();
-			Pertsona e = dbManager.erregistratu(izena, pasahitza, jaiotzeData);
+			Pertsona e = dbManager.erregistratu(izena, pasahitza, jaiotzeData, rola);
 			dbManager.close();
 			return e;
 		}

@@ -12,18 +12,17 @@
 		<span class="col-12"><h1 class="h1 text-center">Bets 2022</h1></span>
 
 		<span class="col-12 text-center"><p:commandButton style=""
-				value="Hasi saioa" type="button" onclick="PF('login').show()"/></span>
+				value="Hasi saioa" type="button" onclick="PF('login').show()" /></span>
 		<span class="col-12 text-center"> <p:commandButton
-				value="Erregistratu" type="button" onclick="PF('register').show()"/>
+				value="Erregistratu" type="button" onclick="PF('register').show()" />
 		</span>
 
-
-		<!--  Proba  Login-->
 
 		<p:dialog id='dialog' ajax='true' header="Hasi saioa"
 			widgetVar="login" showEffect="explode" position='975,325'
 			draggable="true" resizable='true'
-			style="width: 50% !important; height: 20% !important" width="400px" height="300px">
+			style="width: 50% !important; height: 20% !important" width="400px"
+			height="300px">
 
 			<h:form class="container">
 				<div class="row">
@@ -46,17 +45,14 @@
 		</p:dialog>
 
 
-		<!--  Proba  register-->
-
-
 		<p:dialog id='dialog2' ajax='true' header="Erregistratu"
 			widgetVar="register" showEffect="explode" position='975,325'
 			draggable="true" resizable='true' width="400px" height="300px">
-			
+
 			<h:form class="container">
 				<div class="row">
 					<p:focus />
-					
+
 					<span class="col-12"> <label class="col-12 mb-2"
 						for="UserNameR">Erabiltzaile izena: </label> <h:inputText
 							class="col-6 pt-2" id="UserNameR" value="#{login.izena}"
@@ -64,10 +60,20 @@
 							requiredMessage="Erabiltzaile izenak ezin du hutsa izan"></h:inputText>
 						<p:tooltip for="UserNameR"
 							value="Hau izango da aplikazioan izango duzun erabiltzaile izena" />
+					</span> <span class="col-12 pt-2"> <h:outputLabel
+							class="col-12 mb-2" for="PasahitzaR">Pasahitza: </h:outputLabel>
+						<p:password id="PasahitzaR" value="#{login.pasahitza}"
+							inline="true" feedback="true" required="true"
+							requiredMessage="Pasahitzak ezin du hutsa izan"
+							validatorMessage="Bi pasahitzak ez datoz bat" match='PasahitzaR2' />
+
 					</span> <span class="col-12 pt-2"> <label class="col-12 mb-2"
-						for="PasahitzaR">Pasahitza: </label> <p:password id="PasahitzaR"
-							value="#{login.pasahitza}" inline="true" feedback="true"
-							required="true" requiredMessage="Pasahitzak ezin du hutsa izan" />
+						for="PasahitzaR2">Pasahitza berriz: </label> <p:password
+							id="PasahitzaR2" value="#{login.pasahitza}" feedback="false"
+							required="true"
+							requiredMessage="Pasahitza berriz-ek ezin du hutsa izan"
+							validatorMessage="Bi pasahitzak ez datoz bat" />
+
 
 					</span> <span class="col-12 pt-2"> <label class="col-12 mb-2"
 						for="JaiotzeData">Jaiotze data: </label> <p:calendar id="data"
@@ -76,6 +82,13 @@
 							<p:ajax event="dateSelect" listener="#{login.onDateSelect}"></p:ajax>
 
 						</p:calendar>
+					</span> <span class="col-12 pt-2"> <label class="col-12 mb-2"
+						for="Rola">Rola: </label> <h:selectOneMenu id="rola"
+							value="#{login.rola}" converter="omnifaces.SelectItemsConverter">
+							<f:selectItems value="#{login.rolak}" />
+						</h:selectOneMenu>
+
+
 					</span> <span class="col-12 py-3"> <p:commandButton
 							value="Erregistratu" action="#{login.erregistratu}" ajax="true"
 							update=":mezuak" />
@@ -84,11 +97,6 @@
 				</div>
 			</h:form>
 		</p:dialog>
-
-
-
-		<!--  Proba -->
-
 
 		<p:growl id="mezuak" showDetail="true" sticky="true" life="5000" />
 	</f:view>

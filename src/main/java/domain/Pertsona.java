@@ -25,62 +25,28 @@ import configuration.UtilDate;
 @Entity
 public abstract class Pertsona {
 	
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//private Integer pertsonaId;
 	@Id
 	private String izena;
 	private String pasahitza;
-	private int adina;
-	/*@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
-	protected ArrayList<Mezua> jasotakoMezuak;
+	private Date jaiotzeData;
 	
-	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
-	protected ArrayList<Mezua> bidalitakoMezuak;*/
-
 	public Pertsona() {
 		this.pasahitza = null;
 		this.izena = null;
-		this.adina = -1;
-		/*this.jasotakoMezuak= new  ArrayList<Mezua>();
-		this.bidalitakoMezuak= new ArrayList<Mezua>();*/
+		this.jaiotzeData = null;
 	}
-
-	public Pertsona(String izena, String pasahitza, int adina) {
-		this.izena = izena; 
-		this.pasahitza = pasahitza;
-		this.adina = adina;
-		/*this.jasotakoMezuak= new ArrayList<Mezua>();
-		this.bidalitakoMezuak= new ArrayList<Mezua>();*/
-	}
-
-	/*public ArrayList<Mezua> getJasotakoMezuak() {
-		return jasotakoMezuak;
-	}
-
-	public void setJasotakoMezuak(ArrayList<Mezua> jasotakoMezuak) {
-		this.jasotakoMezuak = jasotakoMezuak;
-	}
-
-	public ArrayList<Mezua> getBidalitakoMezuak() {
-		return bidalitakoMezuak;
-	}
-
-	public void setBidalitakoMezuak(ArrayList<Mezua> bidalitakoMezuak) {
-		this.bidalitakoMezuak = bidalitakoMezuak;
-	}*/
 
 	public Pertsona(String izena, String pasahitza, Date jaiotzeData) {
 					
 				
 		this.izena = izena;
 		this.pasahitza = pasahitza;
-		this.adina = UtilDate.calculateAdina(jaiotzeData);
-
+		this.jaiotzeData = jaiotzeData;
 		
 	}
 
 	public String toString() {
-		return "Izena: " + this.izena + " Adina: " + this.adina;
+		return "Izena: " + this.izena + " Adina: " + UtilDate.calculateAdina(this.jaiotzeData);
 	}
 
 	public String getIzena() {
@@ -99,50 +65,25 @@ public abstract class Pertsona {
 		this.pasahitza = pasahitza;
 	}
 
-	public int getAdina() {
-		return adina;
+
+	public Date getJaiotzeData() {
+		return jaiotzeData;
 	}
 
-	public void setAdina(int adina) {
-		this.adina = adina;
+	public void setJaiotzeData(Date jaiotzeData) {
+		this.jaiotzeData = jaiotzeData;
 	}
 
 	public boolean pasahitzaZuzena(String pasahitza) {
 		return (pasahitza.equals(this.pasahitza));
 	}
 	
-/*	public void gehituBidaliLista(Mezua me) {
-		this.bidalitakoMezuak.add(me);
+	public int getAdina() {
+		
+		return UtilDate.calculateAdina(this.jaiotzeData);
+		
 	}
-	
-	public void gehituJasotakoLista(Mezua me) {
-		this.jasotakoMezuak.add(me);
-	}
-	
-	public ArrayList<Mezua> jasotakoMezuakEskuratu(Pertsona norengandik) {
-		ArrayList<Mezua> mezuList= new  ArrayList<Mezua>();
-		if(this.jasotakoMezuak!=null) {
-			for(Mezua m: this.jasotakoMezuak) {
-				if(m.getNor().getIzena().equals(norengandik.getIzena())) {
-					mezuList.add(m);
-				}
-			}
-		}
-		return mezuList;
-	}
-	
-	public ArrayList<Mezua> BidalitakoMezuakEskuratu(Pertsona nori) {
-		ArrayList<Mezua> mezuList= new  ArrayList<Mezua>();
-		if(this.bidalitakoMezuak!=null) {
-			for(Mezua m: this.bidalitakoMezuak) {
-				if(m.getNori().getIzena().equals(nori.getIzena())) {
-					mezuList.add(m);
-				}
-			}
-		}
-		return mezuList;
-	}*/
-	
+		
 	@Override
 	public boolean equals(Object other) {
 		if(other == null) return false;

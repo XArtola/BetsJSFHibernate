@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*Nik sortuttako klaseak */
 body {
-	background-color: #615b5b !important;
+	background-color: rgb(192, 192, 192) !important;
 }
 
 /*.ui-panelgrid>*>tr,
