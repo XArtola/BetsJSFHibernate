@@ -15,6 +15,7 @@ import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.component.chart.bar.BarChart;
 
 import businessLogic.BLFacade;
+import domain.Admin;
 import domain.Erabiltzailea;
 import domain.Pertsona;
 import domain.Rola;
@@ -121,6 +122,18 @@ public class LoginBean {
 		if (this.pertsona != null) {
 
 			this.loged = true;
+			
+			System.out.println(this.pertsona.getClass());
+			
+			if (this.pertsona.getClass().descriptorString() == "class domain.Erabiltzailea")
+				
+				this.rola = this.rolak.get(1);
+			
+			//else if (this.pertsona instanceof Admin)
+			else if (this.pertsona.getClass().descriptorString() == "class domain.Admin")
+
+			
+				this.rola = this.rolak.get(2);
 
 			return "aurrera";
 		}
@@ -204,7 +217,7 @@ public class LoginBean {
 
 		this.loged = false;
 		
-		this.pertsona =null;
+		this.pertsona = null;
 
 		return "logOut";
 

@@ -60,6 +60,7 @@ public class HibernateDataAccess implements DataAccessInterface {
 		session.beginTransaction();
 		session.createQuery("delete from Event");
 		session.createQuery("delete from Question");
+		//session.createQuery("delete from Pertsona");
 		session.getTransaction().commit();
 
 	}
@@ -268,8 +269,6 @@ public class HibernateDataAccess implements DataAccessInterface {
 	}
 
 	public boolean adinaDu(Date jaiotzeData) {
-
-		// System.out.println(adina);
 
 		return (UtilDate.calculateAdina(jaiotzeData) >= 18);
 	}
