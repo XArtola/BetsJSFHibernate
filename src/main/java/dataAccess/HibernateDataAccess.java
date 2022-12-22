@@ -148,8 +148,17 @@ public class HibernateDataAccess implements DataAccessInterface {
 			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 			Date date = formatter.parse(date_string);
 
-			Erabiltzailea er1 = new Erabiltzailea("user", "pass", date);
+			Pertsona er1 = new Erabiltzailea("user", "user", date);
 			session.persist(er1);
+			
+			
+		/*	Pertsona p1 = new Pertsona("p", "p", date);
+			session.persist(p1);*/
+			
+			Pertsona ad1 = new Admin("admin", "admin", date);
+			session.persist(ad1);
+
+
 
 			session.getTransaction().commit();
 			System.out.println("Db initialized");
@@ -234,7 +243,7 @@ public class HibernateDataAccess implements DataAccessInterface {
 
 	@Override
 	public boolean existQuestion(Event event, String question) {
-		session.beginTransaction().commit();
+		session.beginTransaction();
 		System.out.println(">> DataAccess: existQuestion=> event= " + event + " question= " + question);
 		// Event ev = db.find(Event.class, event.getEventNumber());
 		Event ev = (Event) session.get(Event.class, event.getEventNumber());
@@ -254,9 +263,9 @@ public class HibernateDataAccess implements DataAccessInterface {
 		}
 	}
 
-	public Pertsona getErabiltzailea(String izena) {
+	public Pertsona getPertsona(String izena) {
 		session.beginTransaction();
-		Pertsona pertsona = (Pertsona) session.get(Erabiltzailea.class, izena);
+		Pertsona pertsona = (Pertsona) session.get(Pertsona.class, izena);
 		session.getTransaction().commit();
 		return pertsona;
 	}
@@ -276,7 +285,7 @@ public class HibernateDataAccess implements DataAccessInterface {
 	public Pertsona erregistratu(String izena, String pasahitza, Date jaiotzeData, String rola)
 			throws AdinTxikikoa, ErabiltzaileaExistizenDa {
 		// Aztertu ea aurretik existitzen den erabiltzailea izen horrekin
-		Pertsona e = this.getErabiltzailea(izena);
+		Pertsona e = this.getPertsona(izena);
 		if (e == null) {
 			// Erabiltzailerik ez da existitzen
 			// Aztertu ea adina >= 18 den
@@ -285,13 +294,13 @@ public class HibernateDataAccess implements DataAccessInterface {
 
 				Pertsona p = null;
 
-				if (rola == "erabiltzailea") {
+				if (rola.toLowerCase().equals("erabiltzailea")) {
 
 					p = this.sortuErabiltzailea(izena, pasahitza, jaiotzeData);
 
 				}
 
-				else if (rola == "administratzailea") {
+				else if (rola.toLowerCase().equals("administratzailea")) {
 
 					p = this.sortuAdministratzailea(izena, pasahitza, jaiotzeData);
 
@@ -346,6 +355,16 @@ public class HibernateDataAccess implements DataAccessInterface {
 		session.getTransaction().commit();
 
 		return pertsonak;
+	}
+
+	@Override
+	public List<Question> getAllQuestions() {
+		session.beginTransaction();
+		Query q = session.createQuery("from Question");
+		List<Question> questions = q.list();
+		session.getTransaction().commit();
+
+		return questions;
 	}
 
 }

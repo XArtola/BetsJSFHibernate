@@ -69,6 +69,16 @@ public interface BLFacade  {
 	 
 	 public Pertsona getPertsona(String izena);
 	 public Erabiltzailea getErabiltzailea(String izena);
+	 
+	 
+	 //Azterketa
+	 
+	 public List<Question> getAllQuestions();
+	 
+	 
+	 
+	 
+	 
 	
 
 

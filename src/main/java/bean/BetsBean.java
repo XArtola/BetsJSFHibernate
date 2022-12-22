@@ -34,6 +34,20 @@ public class BetsBean {
 	int minBet = 1;
 
 	String question = "";
+	
+	
+	//Azterketa
+	
+	List<Question> galderaGuztiak = new ArrayList<Question>();
+
+
+	public List<Question> getGalderaGuztiak() {
+		return galderaGuztiak;
+	}
+
+	public void setGalderaGuztiak(List<Question> galderaGuztiak) {
+		this.galderaGuztiak = galderaGuztiak;
+	}
 
 	public BetsBean() {
 
@@ -114,6 +128,12 @@ public class BetsBean {
 	public String atzera() {
 		return "atzera";
 	}
+	
+	public String showAll() {
+		
+		this.galderaGuztiak = facadeBL.getAllQuestions();
+		return "showAll";
+	}
 
 	public void onDateSelect(SelectEvent event) {
 
@@ -132,7 +152,7 @@ public class BetsBean {
 
 		if (gertaera == null) {
 			FacesContext.getCurrentInstance().addMessage("createMezuak",
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Errorea", "Gertaera bat aukeratu behar da"));
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Errorea", "Gertaera bat aukeratu behar da"));
 		}
 
 		else {

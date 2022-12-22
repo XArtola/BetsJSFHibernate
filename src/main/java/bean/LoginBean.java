@@ -26,8 +26,6 @@ public class LoginBean {
 	
 	BLFacade facadeBL;
 
-	//Erabiltzailea erabiltzailea = new Erabiltzailea();
-
 	private String izena;
 	private String pasahitza;
 	private int adina;
@@ -40,13 +38,13 @@ public class LoginBean {
 	
 	List<Rola> rolak = new ArrayList<Rola>();;
 	
-	Rola rola;
+	Rola rola = new Rola(1, "Erabiltzailea");
 
 	public LoginBean() {
 
 		facadeBL = FacadeBean.getBusinessLogic();
-		rolak.add(new Rola(1, "erabiltzailea"));
-		rolak.add(new Rola(2, "administratzailea"));
+		rolak.add(new Rola(1, "Erabiltzailea"));
+		rolak.add(new Rola(2, "Administratzailea"));
 	}
 
 	public Pertsona getPertsona() {
@@ -118,22 +116,25 @@ public class LoginBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 
 		this.pertsona =  facadeBL.existitzenDa(izena, pasahitza);
-
+		
 		if (this.pertsona != null) {
+			
+			//System.out.println("Pertsona mota "+this.pertsona.getClass().toString());
 
 			this.loged = true;
 			
 			System.out.println(this.pertsona.getClass());
 			
-			if (this.pertsona.getClass().descriptorString() == "class domain.Erabiltzailea")
+			if (this.pertsona.getClass().toString().equals("class domain.Erabiltzailea"))
 				
-				this.rola = this.rolak.get(1);
+				this.rola = this.rolak.get(0);
 			
 			//else if (this.pertsona instanceof Admin)
-			else if (this.pertsona.getClass().descriptorString() == "class domain.Admin")
-
+			else if (this.pertsona.getClass().toString().equals( "class domain.Admin"))
+	
+				this.rola = this.rolak.get(1);
 			
-				this.rola = this.rolak.get(2);
+			this.izena = null;
 
 			return "aurrera";
 		}
@@ -170,11 +171,13 @@ public class LoginBean {
 		if (this.pertsona != null) {
 
 			this.loged = true;
+			this.izena = "";
 
 			return "aurrera";
 		}
 		
 		else 
+			
 			return null;
 
 	}

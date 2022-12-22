@@ -123,7 +123,7 @@ public class BLFacadeImplementation  implements BLFacade {
 	 @Override
 		public Pertsona existitzenDa(String izena, String pasahitza) {
 			dbManager.open();
-			Pertsona e = dbManager.getErabiltzailea(izena);
+			Pertsona e = dbManager.getPertsona(izena);
 			dbManager.close();
 			if (e != null && e.getPasahitza().equals(pasahitza)) {
 				return e;
@@ -142,7 +142,7 @@ public class BLFacadeImplementation  implements BLFacade {
 		@Override
 		public Pertsona getPertsona(String izena) {
 			dbManager.open();
-			Pertsona p = dbManager.getErabiltzailea(izena);
+			Pertsona p = dbManager.getPertsona(izena);
 			dbManager.close();
 			return p;
 		}
@@ -169,6 +169,14 @@ public class BLFacadeImplementation  implements BLFacade {
 			List<Pertsona> er = dbManager.getPertsonaGuztiak();
 			dbManager.close();
 			return er;
+		}
+
+		@Override
+		public List<Question> getAllQuestions() {
+			dbManager.open();
+			List<Question>  questions=dbManager.getAllQuestions();
+			dbManager.close();
+			return questions;
 		}
 
 

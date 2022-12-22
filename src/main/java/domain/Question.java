@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 
+@SuppressWarnings("serial")
 @Entity
 public class Question implements Serializable {
 	
@@ -154,6 +155,28 @@ public class Question implements Serializable {
 
 	public String toString(){
 		return questionNumber+";"+question+";"+Float.toString(betMinimum);
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + questionNumber;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Rola other = (Rola) obj;
+		if (questionNumber != other.kodea)
+			return false;
+		return true;
 	}
 	
 }

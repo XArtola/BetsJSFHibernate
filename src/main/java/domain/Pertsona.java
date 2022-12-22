@@ -23,7 +23,8 @@ import javax.persistence.OneToMany;
 import configuration.UtilDate;
 
 
-@MappedSuperclass
+//@MappedSuperclass
+@Entity
 public abstract class Pertsona {
 	
 	@Id

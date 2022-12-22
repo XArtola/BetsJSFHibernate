@@ -12,13 +12,15 @@
 
 		<h:form>
 			<p:menu>
-				<p:submenu label="#{login.izena}">
+				<p:submenu label="#{login.pertsona.izena}">
 					<p:menuitem value="Aginte panela" action="#{bets.atzera}" />
 					<p:menuitem value="Amaitu saioa" action="#{login.logOut}" />
 				</p:submenu>
 				<p:submenu label="Aukerak">
 					<p:menuitem value="Ikusi galderak" action="#{bets.find}" />
 					<p:menuitem value="Sortu galdera" action="#{bets.create}" />
+					<p:menuitem value="Ikusi galdera guztiak" action="#{bets.showAll}" />
+					
 				</p:submenu>
 			</p:menu>
 		</h:form>

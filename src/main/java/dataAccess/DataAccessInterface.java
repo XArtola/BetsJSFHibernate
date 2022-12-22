@@ -79,7 +79,7 @@ public interface DataAccessInterface {
 	
 	boolean existitzenDa(String izena, String pasahitza);
 
-	Pertsona getErabiltzailea(String izena);
+	Pertsona getPertsona(String izena);
 
 	Erabiltzailea getErabiltzaileaIzenarekin(String izena);
 
@@ -94,6 +94,10 @@ public interface DataAccessInterface {
 	public List<Erabiltzailea> getErabiltzaileaGuztiak();
 
 	public List<Pertsona> getPertsonaGuztiak();
+	
+	// Azterketa
+	
+	public List<Question> getAllQuestions();
 	
 
 }

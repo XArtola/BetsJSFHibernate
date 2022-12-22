@@ -31,6 +31,8 @@ public class Rola {
 	public void setMota(String mota) {
 		this.mota = mota;
 	}
+	
+	
 
 	public String toString() {
 		return this.mota;

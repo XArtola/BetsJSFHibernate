@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf16686844837090" configfile="/BetsJSFHibernate/src/main/webapp/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="CreateQuestion.xhtml" x="456" y="468" id="pf16686847975981" referenceLink="//@navigationRule.13/@fromViewId|" outlinks="pf16702638149350 pf16702638149351 pf167026440775810" inlinks="pf16702638149352 pf16702643912099" path="/CreateQuestion.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="FindQuestions.xhtml" x="456" y="252" id="pf16686847975984" referenceLink="//@navigationRule.13/@navigationCase.0/@toViewId|" outlinks="pf16702638149353 pf16702638149354 pf16702643912099" inlinks="pf16702638149355 pf167026440775810" path="/FindQuestions.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="LandingPage.xhtml" x="168" y="144" id="pf16702408240294" referenceLink="//@navigationRule.15/@fromViewId|" outlinks="pf16705390631400" inlinks="pf16702638149356 pf16702638149351 pf16702638149354" path="/LandingPage.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="Main.xhtml" x="768" y="106" id="pf16702638149358" referenceLink="//@navigationRule.15/@navigationCase.0/@toViewId|" outlinks="pf16702638149355 pf16702638149352 pf16702638149356 pf167026442763311" inlinks="pf16702638149353 pf16702638149350 pf167026442763311 pf16705390631400" path="/Main.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="CreateQuestion.xhtml" x="696" y="264" id="pf16686847975981" referenceLink="//@navigationRule.8/@fromViewId|" outlinks="pf16702638149350 pf16702638149351 pf167026440775810 pf16716449848933" inlinks="pf16702638149352 pf16702643912099 pf16716449848934" path="/CreateQuestion.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="FindQuestions.xhtml" x="444" y="192" id="pf16686847975984" referenceLink="//@navigationRule.8/@navigationCase.0/@toViewId|" outlinks="pf16702638149353 pf16702638149354 pf16702643912099 pf16716449848935" inlinks="pf16702638149355 pf167026440775810 pf16716449848936" path="/FindQuestions.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="LandingPage.xhtml" x="168" y="132" id="pf16702408240294" referenceLink="//@navigationRule.10/@fromViewId|" outlinks="pf16705390631400" inlinks="pf16702638149356 pf16702638149351 pf16702638149354 pf16716449848937" path="/LandingPage.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="Main.xhtml" x="768" y="108" id="pf16702638149358" referenceLink="//@navigationRule.11/@fromViewId|" outlinks="pf16702638149355 pf16702638149352 pf16702638149356 pf167026442763311 pf16716417092220" inlinks="pf16702638149353 pf16702638149350 pf167026442763311 pf16705390631400 pf16716417092221" path="/Main.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ShowQuestions.xhtml" x="876" y="540" id="pf16716417092222" outlinks="pf16716417092221 pf16716449848934 pf16716449848937 pf16716449848936" inlinks="pf16716417092220 pf16716449848933 pf16716449848935" path="/ShowQuestions.xhtml"/>
   <links id="pf16702638149355" target="pf16686847975984" source="pf16702638149358" outcome="find" redirect="true"/>
   <links id="pf16702638149352" target="pf16686847975981" source="pf16702638149358" outcome="create" redirect="true"/>
   <links id="pf16702638149353" target="pf16702638149358" source="pf16686847975984" outcome="atzera" redirect="true"/>
@@ -19,4 +20,11 @@
     <bendPoints d1Width="-64" d2Width="-64"/>
   </links>
   <links id="pf16705390631400" target="pf16702638149358" source="pf16702408240294" outcome="aurrera" redirect="true"/>
+  <links id="pf16716417092220" target="pf16716417092222" source="pf16702638149358" outcome="showAll" redirect="true"/>
+  <links id="pf16716417092221" target="pf16702638149358" source="pf16716417092222" outcome="atzera" redirect="true"/>
+  <links id="pf16716449848934" target="pf16686847975981" source="pf16716417092222" outcome="create" redirect="true"/>
+  <links id="pf16716449848933" target="pf16716417092222" source="pf16686847975981" outcome="showAll" redirect="true"/>
+  <links id="pf16716449848937" target="pf16702408240294" source="pf16716417092222" outcome="logOut" redirect="true"/>
+  <links id="pf16716449848936" target="pf16686847975984" source="pf16716417092222" outcome="find" redirect="true"/>
+  <links id="pf16716449848935" target="pf16716417092222" source="pf16686847975984" outcome="showAll" redirect="true"/>
 </pageflow:Pageflow>

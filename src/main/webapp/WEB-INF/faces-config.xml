@@ -111,4 +111,67 @@
    <redirect />
   </navigation-case>
  </navigation-rule>
+ <navigation-rule>
+ 	<display-name>Main.xhtml</display-name>
+ 	<from-view-id>/Main.xhtml</from-view-id>
+ 	<navigation-case>
+ 		<from-outcome>showAll</from-outcome>
+ 		<to-view-id>/ShowQuestions.xhtml</to-view-id>
+ 		<redirect />
+ 	</navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+ 	<display-name>ShowQuestions.xhtml</display-name>
+ 	<from-view-id>/ShowQuestions.xhtml</from-view-id>
+ 	<navigation-case>
+ 		<from-outcome>atzera</from-outcome>
+ 		<to-view-id>/Main.xhtml</to-view-id>
+ 		<redirect />
+ 	</navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+ 	<display-name>ShowQuestions.xhtml</display-name>
+ 	<from-view-id>/ShowQuestions.xhtml</from-view-id>
+ 	<navigation-case>
+ 		<from-outcome>create</from-outcome>
+ 		<to-view-id>/CreateQuestion.xhtml</to-view-id>
+ 		<redirect />
+ 	</navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+ 	<display-name>CreateQuestion.xhtml</display-name>
+ 	<from-view-id>/CreateQuestion.xhtml</from-view-id>
+ 	<navigation-case>
+ 		<from-outcome>showAll</from-outcome>
+ 		<to-view-id>/ShowQuestions.xhtml</to-view-id>
+ 		<redirect />
+ 	</navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+ 	<display-name>ShowQuestions.xhtml</display-name>
+ 	<from-view-id>/ShowQuestions.xhtml</from-view-id>
+ 	<navigation-case>
+ 		<from-outcome>logOut</from-outcome>
+ 		<to-view-id>/LandingPage.xhtml</to-view-id>
+ 		<redirect />
+ 	</navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+ 	<display-name>ShowQuestions.xhtml</display-name>
+ 	<from-view-id>/ShowQuestions.xhtml</from-view-id>
+ 	<navigation-case>
+ 		<from-outcome>find</from-outcome>
+ 		<to-view-id>/FindQuestions.xhtml</to-view-id>
+ 		<redirect />
+ 	</navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+ 	<display-name>FindQuestions.xhtml</display-name>
+ 	<from-view-id>/FindQuestions.xhtml</from-view-id>
+ 	<navigation-case>
+ 		<from-outcome>showAll</from-outcome>
+ 		<to-view-id>/ShowQuestions.xhtml</to-view-id>
+ 		<redirect />
+ 	</navigation-case>
+ </navigation-rule>
 </faces-config>
